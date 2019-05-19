@@ -61,3 +61,21 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+
+*.xcarchive
+
+*.dSYM
+
+*.xcworkspace
+
+XQArchiveDemo/Pods/
+XQArchiveDemo/Podfile.lock
+
+XQArchiveProject/Pods/
+XQArchiveProject/Podfile.lock
+
+XQArchiveDemo/XQArchiveAndIpa
+
+XQArchiveDemo/xq_shell/xq_exportDev.plist
+XQArchiveDemo/xq_shell/xq_exportDis.plist
