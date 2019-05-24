@@ -1,7 +1,16 @@
 # 获取json配置数据
 
+# 配置文件夹路径
+xqConfigFolderPath="/Users/wangxingqian/Desktop/Blog/XQScriptArchive1/Config"
+
 # json 路径
-xqConfigJsonPath="xq_shell/xq_config.json"
+xqConfigJsonPath="$xqConfigFolderPath/xq_config.json"
+# json 路径
+xqAppConfigJsonPath="$xqConfigFolderPath/xq_appStoreConfig.json"
+# json 路径
+xqBuglyConfigJsonPath="$xqConfigFolderPath/xq_buglyConfig.json"
+# json 路径
+xqFirConfigJsonPath="$xqConfigFolderPath/xq_firConfig.json"
 
 #上一级目录
 #project_path=$(dirname $(pwd))
@@ -13,6 +22,22 @@ xqConfigJsonPath="xq_shell/xq_config.json"
 
 # 打印所有配置
 echo "配置: $(jq . $xqConfigJsonPath)"
+# 打印所有配置
+echo "配置: $(jq . $xqAppConfigJsonPath)"
+# 打印所有配置
+echo "配置: $(jq . $xqBuglyConfigJsonPath)"
+# 打印所有配置
+echo "配置: $(jq . $xqFirConfigJsonPath)"
+
+
+# 编译选项
+buildMode=$(jq .buildMode $xqConfigJsonPath)
+
+# 上传选项
+upAppStore=$(jq .upAppStore $xqConfigJsonPath)
+
+# 上传选项
+upFir=$(jq .upFir $xqConfigJsonPath)
 
 # 项目路径
 xcodeprojPath=$(jq .xcodeprojPath $xqConfigJsonPath)
@@ -49,11 +74,17 @@ xq_exportOptionsPlistPath=${xq_devExportOptionsPlistPath}
 #编译模式 Debug/Release
 archiveMode=$(jq .archiveMode $xqConfigJsonPath)
 
+# .xcarchive 文件
+xcarchivePath=$(jq .xcarchivePath $xqConfigJsonPath)
+
+# .ipa 文件
+ipaPath=$(jq .ipaPath $xqConfigJsonPath)
+
 ####### 上传App Store的修改
 #开发账号
-appleID=$(jq .appleId $xqConfigJsonPath)       
+appleID=$(jq .appleId $xqAppConfigJsonPath)
 #密码, 如果开了双重验证, 那么就要APP-SPECIFIC PASSWORDS, 具体可百度, 申请专用密码: https://appleid.apple.com/account/manage
-appleIDPwd=$(jq .appleIdPwd $xqConfigJsonPath) 
+appleIDPwd=$(jq .appleIdPwd $xqAppConfigJsonPath) 
 
 ####### 上传Fir的修改
 #上传fir的token
@@ -71,6 +102,8 @@ function xq_isEmpty() {
     return 0
 }
 
+xq_isEmpty $buildMode buildMode
+xq_isEmpty $upMode upMode
 xq_isEmpty $xcworkspace_path xcworkspace_path
 xq_isEmpty $scheme_name scheme_name
 xq_isEmpty $xq_bundleID xq_bundleID
@@ -121,6 +154,12 @@ appleIDPwd=$xq_result
 xq_assignment $firToken
 firToken=$xq_result
 
+xq_assignment $xcarchivePath
+xcarchivePath=$xq_result
+
+xq_assignment $ipaPath
+ipaPath=$xq_result
+
 # ${var:-null} 如果是 var 是空值, 那么默认取得为 null, 不过这个解决不了 "" 问题, 所以还是按照现在的来吧
 
 source ./xq_shell.sh \
@@ -137,4 +176,12 @@ source ./xq_shell.sh \
     ${xq_disExportOptionsPlistPath} \
     ${appleID} \
     ${appleIDPwd} \
-    ${firToken}
+    ${firToken} \
+    ${buildMode} \
+    ${upAppStore} \
+    ${upFir} \
+    ${xcarchivePath} \
+    ${ipaPath}
+
+
+

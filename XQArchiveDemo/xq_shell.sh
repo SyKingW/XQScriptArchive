@@ -57,6 +57,29 @@ appleIDPwd=${13}
 #上传fir的token
 firToken=${14}
 
+# 构建 model
+# 0: 什么都不做
+# 1: 构建
+# 2: 打包ipa
+buildMode=${15}
+
+# 上传 model
+# 0: 不上传
+# 1: 上传App Store
+# 2: 上传Fir
+upAppStore=${16}
+
+# 上传 model
+# 0: 不上传
+# 1: 上传Fir
+upFir=${17}
+
+# xcarchive_path
+xcarchive_path=${17}
+
+# ipaPath
+ipaPath=${18}
+
 #脚本和配置文件的文件夹名称
 xq_shellPath=xq_shell
 
@@ -78,47 +101,54 @@ source ./${xq_shellPath}/xq_upload.sh
 #配置plist, 这里有个坑, 如果不这样传参数...是传过去, 是不完整的, 因为值有空格...
 configExport "${xq_signingCertificate}" "${xq_teamID}" "${xq_bundleID}" "${xq_disExportOptionsPlistPath}" "${xq_devExportOptionsPlistPath}"
 
-# 其实这里不应该是 App Store和 Developer 的, 应该打包是打包, 上传到哪就哪
-number=1
-if [ archiveMode="Debug" ]; then
-    number=1
-elif [ archiveMode="Release" ]; then
-    number=2
+#根据打包的类型, 获取配置文件路径
+if [ $archiveMode == Release ]; then
+    xq_exportOptionsPlistPath=${xq_disExportOptionsPlistPath}
+elif [ $archiveMode == Debug ]; then
+    xq_exportOptionsPlistPath=${xq_devExportOptionsPlistPath}
 else
-    echo "请选择 archiveMode"
+    echo "请填写 archiveMode"
     exit 0
 fi
 
-#根据打包的类型, 获取配置文件路径
-if [ $number == 2 ]; then
-    archiveMode=Release
-    xq_exportOptionsPlistPath=${xq_disExportOptionsPlistPath}
-else
-    archiveMode=Debug
-    xq_exportOptionsPlistPath=${xq_devExportOptionsPlistPath}
+#具体执行步骤
+# echo "请选择打包步骤"
+# echo "1:需要编译"
+# echo "2:无需编译, 已有xcarchive文件, 直接导出ipa包"
+# echo "3:已有ipa包, 上传到fir"
+# echo "4:已有ipa包, 上传到app store"
+# echo "5:上传dSYM"
+# read buildMode
+# while ([[ $buildMode != 1 ]] && [[ $buildMode != 2 ]] && [[ $buildMode != 3 ]] && [[ $buildMode != 4 ]] && [[ $buildMode != 5 ]]); do
+#     echo "Error! Should enter 1 or 2"
+#     echo "请选择打包步骤"
+#     echo "1:需要编译"
+#     echo "2:无需编译, 已有.xcarchive文件"
+#     echo "3:已有ipa包, 上传到fir"
+#     echo "4:已有ipa包, 上传到app store"
+#     echo "5:上传dSYM"
+#     read buildMode
+# done
+
+if [ $buildMode == 0 ]; then
+
+elif [ $buildMode == 1 ]; then
+
+    #调用自增Bundle函数
+    automaticAddBundle ${projectPlist_path}
+
+    #调用这个之后, 因为那边返回出 xcarchive_path 这个值, 所以这边不用声明, 直接使用这个就好
+    createXcarchiveFile ${archiveMode} ${xcworkspace_path} ${scheme_name} ${build_path} ${projectPlist_path} ${isGenerateDSYM} ${saveDirectionPath}
+
+elif [ $buildMode == 2 ]; then
+
+    #把xcarchive, 打成ipa包, 并返回 ipaPath
+    createIpa ${xcarchive_path} ${scheme_name} ${archiveMode} ${ipaDir_path} ${xq_exportOptionsPlistPath} ${xcworkspace_path}
+
 fi
 
-#具体执行步骤
-echo "请选择打包步骤"
-echo "1:需要编译"
-echo "2:无需编译, 已有xcarchive文件, 直接导出ipa包"
-echo "3:已有ipa包, 上传到fir"
-echo "4:已有ipa包, 上传到app store"
-echo "5:上传dSYM"
-read stepNumber
-while ([[ $stepNumber != 1 ]] && [[ $stepNumber != 2 ]] && [[ $stepNumber != 3 ]] && [[ $stepNumber != 4 ]] && [[ $stepNumber != 5 ]]); do
-    echo "Error! Should enter 1 or 2"
-    echo "请选择打包步骤"
-    echo "1:需要编译"
-    echo "2:无需编译, 已有.xcarchive文件"
-    echo "3:已有ipa包, 上传到fir"
-    echo "4:已有ipa包, 上传到app store"
-    echo "5:上传dSYM"
-    read stepNumber
-done
-
 #--------已有xcarchive-------
-if [ $stepNumber == 2 ]; then
+if [ $buildMode == 2 ]; then
 
     echo "上传到哪里 ? [ 1:fir 2:不上传 3:AppStore] "
     read isUpload
@@ -137,7 +167,7 @@ if [ $stepNumber == 2 ]; then
 fi
 
 #--------已有ipa包,上传到fir-------
-if [ $stepNumber == 3 ]; then
+if [ $buildMode == 3 ]; then
     echo "请输入ipa包路径"
     read ipaPath
     xqUploadFir ${firToken} ${ipaPath}
@@ -145,7 +175,7 @@ if [ $stepNumber == 3 ]; then
 fi
 
 #--------已有ipa包,上传到appstore-------
-if [ $stepNumber == 4 ]; then
+if [ $buildMode == 4 ]; then
     echo "请输入ipa包路径"
     read ipaPath
     xqUploadAppStore ${appleID} ${appleIDPwd} ${ipaPath}
@@ -166,11 +196,12 @@ function uploadDSYM() {
     xq_PRODUCT_BUNDLE_IDENTIFIER=""
 
     if [ "${xq_PRODUCT_BUNDLE_IDENTIFIER}" == "" ]; then
-        
+
     elif [ "${xq_PRODUCT_BUNDLE_IDENTIFIER}" == "" ]; then
 
-        
-    elif [ "${xq_PRODUCT_BUNDLE_IDENTIFIER}" == "" ]; then
+    elif
+        [ "${xq_PRODUCT_BUNDLE_IDENTIFIER}" == "" ]
+    then
         xq_BUGLY_APP_ID=""
         xq_BUGLY_APP_KEY=""
     fi
@@ -192,7 +223,7 @@ function uploadDSYM() {
     source ./${xq_shellPath}/xq_bugly.sh ${xq_BUGLY_APP_ID} ${xq_BUGLY_APP_KEY} ${xq_PRODUCT_BUNDLE_IDENTIFIER} ${xq_BUGLY_APP_VERSION} ${xq_DWARF_DSYM_FOLDER_PATH} ${xq_SYMBOL_OUTPUT_PATH} 1
 }
 
-if [ $stepNumber == 5 ]; then
+if [ $buildMode == 5 ]; then
     echo "请输入dSYM文件夹路径"
     read dSYMPath
     uploadDSYM ${dSYMPath} ${projectPlist_path}
@@ -236,16 +267,6 @@ if [ $isGenerateDSYM == 1 ]; then
 else
     isGenerateDSYM=false
 fi
-
-#调用自增Bundle函数
-automaticAddBundle ${projectPlist_path}
-
-#调用编译函数
-#调用这个之后, 因为那边返回出 xcarchive_path 这个值, 所以这边不用声明, 直接使用这个就好
-createXcarchiveFile ${archiveMode} ${xcworkspace_path} ${scheme_name} ${build_path} ${projectPlist_path} ${isGenerateDSYM} ${saveDirectionPath}
-
-#把xcarchive, 打成ipa包, 并返回 ipaPath
-createIpa ${xcarchive_path} ${scheme_name} ${archiveMode} ${ipaDir_path} ${xq_exportOptionsPlistPath} ${xcworkspace_path}
 
 #上传ipa
 xq_uploadIpa $isUpload $ipaPath $firToken $appleID $appleIDPwd
