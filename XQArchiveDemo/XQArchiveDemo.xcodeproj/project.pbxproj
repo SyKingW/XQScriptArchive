@@ -14,7 +14,76 @@
 		A44FCDBF228E37ED003B9C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44FCDBE228E37ED003B9C58 /* Assets.xcassets */; };
 		A44FCDC2228E37ED003B9C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44FCDC0228E37ED003B9C58 /* LaunchScreen.storyboard */; };
 		A44FCDC5228E37ED003B9C58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FCDC4228E37ED003B9C58 /* main.m */; };
+		A4E8683C229E2F2E008BBB73 /* XQTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E8683B229E2F2E008BBB73 /* XQTestFile.swift */; };
+		A4E86849229E6E46008BBB73 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E86848229E6E46008BBB73 /* NotificationCenter.framework */; };
+		A4E8684D229E6E46008BBB73 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E8684C229E6E46008BBB73 /* TodayViewController.m */; };
+		A4E86850229E6E46008BBB73 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E8684E229E6E46008BBB73 /* MainInterface.storyboard */; };
+		A4E86854229E6E46008BBB73 /* XQArchiveDemoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A4E86847229E6E45008BBB73 /* XQArchiveDemoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A4E8685E229E6F9D008BBB73 /* XQTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E8683B229E2F2E008BBB73 /* XQTestFile.swift */; };
+		A4E8685F229E6F9D008BBB73 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FCDB9228E37EB003B9C58 /* ViewController.m */; };
+		A4E86860229E6F9D008BBB73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FCDC4228E37ED003B9C58 /* main.m */; };
+		A4E86861229E6F9D008BBB73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FCDB6228E37EB003B9C58 /* AppDelegate.m */; };
+		A4E86863229E6F9D008BBB73 /* Pods_XQArchiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319A30D62BE6D43FB6E666DB /* Pods_XQArchiveDemo.framework */; };
+		A4E86865229E6F9D008BBB73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44FCDC0228E37ED003B9C58 /* LaunchScreen.storyboard */; };
+		A4E86866229E6F9D008BBB73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44FCDBE228E37ED003B9C58 /* Assets.xcassets */; };
+		A4E86867229E6F9D008BBB73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44FCDBB228E37EB003B9C58 /* Main.storyboard */; };
+		A4E8686A229E6F9D008BBB73 /* XQArchiveDemoToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A4E86847229E6E45008BBB73 /* XQArchiveDemoToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A4E86876229E7113008BBB73 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E86875229E7113008BBB73 /* UserNotifications.framework */; };
+		A4E86878229E7113008BBB73 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E86877229E7113008BBB73 /* UserNotificationsUI.framework */; };
+		A4E8687C229E7113008BBB73 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E8687B229E7113008BBB73 /* NotificationViewController.m */; };
+		A4E8687F229E7113008BBB73 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E8687D229E7113008BBB73 /* MainInterface.storyboard */; };
+		A4E86883229E7113008BBB73 /* XQArchiveDemoNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A4E86874229E7113008BBB73 /* XQArchiveDemoNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A4E86852229E6E46008BBB73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A44FCDAA228E37EB003B9C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4E86846229E6E45008BBB73;
+			remoteInfo = XQArchiveDemoToday;
+		};
+		A4E8685B229E6F9D008BBB73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A44FCDAA228E37EB003B9C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4E86846229E6E45008BBB73;
+			remoteInfo = XQArchiveDemoToday;
+		};
+		A4E86881229E7113008BBB73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A44FCDAA228E37EB003B9C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4E86873229E7113008BBB73;
+			remoteInfo = XQArchiveDemoNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A4E86858229E6E46008BBB73 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A4E86883229E7113008BBB73 /* XQArchiveDemoNotification.appex in Embed App Extensions */,
+				A4E86854229E6E46008BBB73 /* XQArchiveDemoToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86869229E6F9D008BBB73 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A4E8686A229E6F9D008BBB73 /* XQArchiveDemoToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		319A30D62BE6D43FB6E666DB /* Pods_XQArchiveDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XQArchiveDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +98,23 @@
 		A44FCDC3228E37ED003B9C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44FCDC4228E37ED003B9C58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A44FCDCB228E406B003B9C58 /* XQArchiveDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XQArchiveDemo.entitlements; sourceTree = "<group>"; };
+		A4E8683A229E2F2D008BBB73 /* XQArchiveDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XQArchiveDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		A4E8683B229E2F2E008BBB73 /* XQTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XQTestFile.swift; sourceTree = "<group>"; };
+		A4E86847229E6E45008BBB73 /* XQArchiveDemoToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XQArchiveDemoToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E86848229E6E46008BBB73 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A4E8684B229E6E46008BBB73 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		A4E8684C229E6E46008BBB73 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		A4E8684F229E6E46008BBB73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		A4E86851229E6E46008BBB73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4E8686E229E6F9D008BBB73 /* XQArchiveDemoTwo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XQArchiveDemoTwo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E8686F229E6F9D008BBB73 /* XQArchiveDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "XQArchiveDemo copy-Info.plist"; path = "/Users/wangxingqian/Desktop/Blog/XQScriptArchive/XQArchiveDemo/XQArchiveDemo copy-Info.plist"; sourceTree = "<absolute>"; };
+		A4E86874229E7113008BBB73 /* XQArchiveDemoNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XQArchiveDemoNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E86875229E7113008BBB73 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		A4E86877229E7113008BBB73 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		A4E8687A229E7113008BBB73 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		A4E8687B229E7113008BBB73 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		A4E8687E229E7113008BBB73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		A4E86880229E7113008BBB73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B27B82708CE36C7ECE8706AC /* Pods-XQArchiveDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XQArchiveDemo.debug.xcconfig"; path = "Target Support Files/Pods-XQArchiveDemo/Pods-XQArchiveDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D2E8FEB8CEE4015AA4EE77E3 /* Pods-XQArchiveDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XQArchiveDemo.release.xcconfig"; path = "Target Support Files/Pods-XQArchiveDemo/Pods-XQArchiveDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,6 +125,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3439F2421F978E16A97C265 /* Pods_XQArchiveDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86844229E6E45008BBB73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E86849229E6E46008BBB73 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86862229E6F9D008BBB73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E86863229E6F9D008BBB73 /* Pods_XQArchiveDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86871229E7113008BBB73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E86878229E7113008BBB73 /* UserNotificationsUI.framework in Frameworks */,
+				A4E86876229E7113008BBB73 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +169,12 @@
 			isa = PBXGroup;
 			children = (
 				A44FCDB4228E37EB003B9C58 /* XQArchiveDemo */,
+				A4E8684A229E6E46008BBB73 /* XQArchiveDemoToday */,
+				A4E86879229E7113008BBB73 /* XQArchiveDemoNotification */,
 				A44FCDB3228E37EB003B9C58 /* Products */,
 				5404707DDEE89E88F9A829FD /* Pods */,
 				DD43417A7820153A35E705D0 /* Frameworks */,
+				A4E8686F229E6F9D008BBB73 /* XQArchiveDemo copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				A44FCDB2228E37EB003B9C58 /* XQArchiveDemo.app */,
+				A4E86847229E6E45008BBB73 /* XQArchiveDemoToday.appex */,
+				A4E8686E229E6F9D008BBB73 /* XQArchiveDemoTwo.app */,
+				A4E86874229E7113008BBB73 /* XQArchiveDemoNotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,19 +197,46 @@
 				A44FCDB6228E37EB003B9C58 /* AppDelegate.m */,
 				A44FCDB8228E37EB003B9C58 /* ViewController.h */,
 				A44FCDB9228E37EB003B9C58 /* ViewController.m */,
+				A4E8683B229E2F2E008BBB73 /* XQTestFile.swift */,
 				A44FCDBB228E37EB003B9C58 /* Main.storyboard */,
 				A44FCDBE228E37ED003B9C58 /* Assets.xcassets */,
 				A44FCDC0228E37ED003B9C58 /* LaunchScreen.storyboard */,
 				A44FCDC3228E37ED003B9C58 /* Info.plist */,
 				A44FCDC4228E37ED003B9C58 /* main.m */,
+				A4E8683A229E2F2D008BBB73 /* XQArchiveDemo-Bridging-Header.h */,
 			);
 			path = XQArchiveDemo;
+			sourceTree = "<group>";
+		};
+		A4E8684A229E6E46008BBB73 /* XQArchiveDemoToday */ = {
+			isa = PBXGroup;
+			children = (
+				A4E8684B229E6E46008BBB73 /* TodayViewController.h */,
+				A4E8684C229E6E46008BBB73 /* TodayViewController.m */,
+				A4E8684E229E6E46008BBB73 /* MainInterface.storyboard */,
+				A4E86851229E6E46008BBB73 /* Info.plist */,
+			);
+			path = XQArchiveDemoToday;
+			sourceTree = "<group>";
+		};
+		A4E86879229E7113008BBB73 /* XQArchiveDemoNotification */ = {
+			isa = PBXGroup;
+			children = (
+				A4E8687A229E7113008BBB73 /* NotificationViewController.h */,
+				A4E8687B229E7113008BBB73 /* NotificationViewController.m */,
+				A4E8687D229E7113008BBB73 /* MainInterface.storyboard */,
+				A4E86880229E7113008BBB73 /* Info.plist */,
+			);
+			path = XQArchiveDemoNotification;
 			sourceTree = "<group>";
 		};
 		DD43417A7820153A35E705D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				319A30D62BE6D43FB6E666DB /* Pods_XQArchiveDemo.framework */,
+				A4E86848229E6E46008BBB73 /* NotificationCenter.framework */,
+				A4E86875229E7113008BBB73 /* UserNotifications.framework */,
+				A4E86877229E7113008BBB73 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,15 +253,73 @@
 				A44FCDAF228E37EB003B9C58 /* Frameworks */,
 				A44FCDB0228E37EB003B9C58 /* Resources */,
 				56C86EE6F9072B2E3D3CDDED /* [CP] Embed Pods Frameworks */,
+				A4E86858229E6E46008BBB73 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A4E86853229E6E46008BBB73 /* PBXTargetDependency */,
+				A4E86882229E7113008BBB73 /* PBXTargetDependency */,
 			);
 			name = XQArchiveDemo;
 			productName = XQArchiveDemo;
 			productReference = A44FCDB2228E37EB003B9C58 /* XQArchiveDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A4E86846229E6E45008BBB73 /* XQArchiveDemoToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E86857229E6E46008BBB73 /* Build configuration list for PBXNativeTarget "XQArchiveDemoToday" */;
+			buildPhases = (
+				A4E86843229E6E45008BBB73 /* Sources */,
+				A4E86844229E6E45008BBB73 /* Frameworks */,
+				A4E86845229E6E45008BBB73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XQArchiveDemoToday;
+			productName = XQArchiveDemoToday;
+			productReference = A4E86847229E6E45008BBB73 /* XQArchiveDemoToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A4E86859229E6F9D008BBB73 /* XQArchiveDemoTwo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E8686B229E6F9D008BBB73 /* Build configuration list for PBXNativeTarget "XQArchiveDemoTwo" */;
+			buildPhases = (
+				A4E8685C229E6F9D008BBB73 /* [CP] Check Pods Manifest.lock */,
+				A4E8685D229E6F9D008BBB73 /* Sources */,
+				A4E86862229E6F9D008BBB73 /* Frameworks */,
+				A4E86864229E6F9D008BBB73 /* Resources */,
+				A4E86868229E6F9D008BBB73 /* [CP] Embed Pods Frameworks */,
+				A4E86869229E6F9D008BBB73 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4E8685A229E6F9D008BBB73 /* PBXTargetDependency */,
+			);
+			name = XQArchiveDemoTwo;
+			productName = XQArchiveDemo;
+			productReference = A4E8686E229E6F9D008BBB73 /* XQArchiveDemoTwo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A4E86873229E7113008BBB73 /* XQArchiveDemoNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E86884229E7113008BBB73 /* Build configuration list for PBXNativeTarget "XQArchiveDemoNotification" */;
+			buildPhases = (
+				A4E86870229E7113008BBB73 /* Sources */,
+				A4E86871229E7113008BBB73 /* Frameworks */,
+				A4E86872229E7113008BBB73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XQArchiveDemoNotification;
+			productName = XQArchiveDemoNotification;
+			productReference = A4E86874229E7113008BBB73 /* XQArchiveDemoNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -130,6 +332,7 @@
 				TargetAttributes = {
 					A44FCDB1228E37EB003B9C58 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
 								enabled = 1;
@@ -144,6 +347,12 @@
 								enabled = 1;
 							};
 						};
+					};
+					A4E86846229E6E45008BBB73 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					A4E86873229E7113008BBB73 = {
+						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
 			};
@@ -160,7 +369,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A4E86846229E6E45008BBB73 /* XQArchiveDemoToday */,
 				A44FCDB1228E37EB003B9C58 /* XQArchiveDemo */,
+				A4E86859229E6F9D008BBB73 /* XQArchiveDemoTwo */,
+				A4E86873229E7113008BBB73 /* XQArchiveDemoNotification */,
 			);
 		};
 /* End PBXProject section */
@@ -173,6 +385,32 @@
 				A44FCDC2228E37ED003B9C58 /* LaunchScreen.storyboard in Resources */,
 				A44FCDBF228E37ED003B9C58 /* Assets.xcassets in Resources */,
 				A44FCDBD228E37EB003B9C58 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86845229E6E45008BBB73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E86850229E6E46008BBB73 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86864229E6F9D008BBB73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E86865229E6F9D008BBB73 /* LaunchScreen.storyboard in Resources */,
+				A4E86866229E6F9D008BBB73 /* Assets.xcassets in Resources */,
+				A4E86867229E6F9D008BBB73 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86872229E7113008BBB73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E8687F229E7113008BBB73 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +463,52 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XQArchiveDemo/Pods-XQArchiveDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A4E8685C229E6F9D008BBB73 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XQArchiveDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4E86868229E6F9D008BBB73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XQArchiveDemo/Pods-XQArchiveDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XQArchiveDemo/Pods-XQArchiveDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -232,13 +516,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4E8683C229E2F2E008BBB73 /* XQTestFile.swift in Sources */,
 				A44FCDBA228E37EB003B9C58 /* ViewController.m in Sources */,
 				A44FCDC5228E37ED003B9C58 /* main.m in Sources */,
 				A44FCDB7228E37EB003B9C58 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A4E86843229E6E45008BBB73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E8684D229E6E46008BBB73 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E8685D229E6F9D008BBB73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E8685E229E6F9D008BBB73 /* XQTestFile.swift in Sources */,
+				A4E8685F229E6F9D008BBB73 /* ViewController.m in Sources */,
+				A4E86860229E6F9D008BBB73 /* main.m in Sources */,
+				A4E86861229E6F9D008BBB73 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E86870229E7113008BBB73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E8687C229E7113008BBB73 /* NotificationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4E86853229E6E46008BBB73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4E86846229E6E45008BBB73 /* XQArchiveDemoToday */;
+			targetProxy = A4E86852229E6E46008BBB73 /* PBXContainerItemProxy */;
+		};
+		A4E8685A229E6F9D008BBB73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4E86846229E6E45008BBB73 /* XQArchiveDemoToday */;
+			targetProxy = A4E8685B229E6F9D008BBB73 /* PBXContainerItemProxy */;
+		};
+		A4E86882229E7113008BBB73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4E86873229E7113008BBB73 /* XQArchiveDemoNotification */;
+			targetProxy = A4E86881229E7113008BBB73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A44FCDBB228E37EB003B9C58 /* Main.storyboard */ = {
@@ -255,6 +585,22 @@
 				A44FCDC1228E37ED003B9C58 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A4E8684E229E6E46008BBB73 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E8684F229E6E46008BBB73 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		A4E8687D229E7113008BBB73 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E8687E229E7113008BBB73 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -377,9 +723,10 @@
 			baseConfigurationReference = B27B82708CE36C7ECE8706AC /* Pods-XQArchiveDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = XQArchiveDemo/XQArchiveDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HYE5WA8QEX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = XQArchiveDemo/Info.plist;
@@ -390,7 +737,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = FlutterHybridDemoDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "XQArchiveDemo/XQArchiveDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -400,9 +750,10 @@
 			baseConfigurationReference = D2E8FEB8CEE4015AA4EE77E3 /* Pods-XQArchiveDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = XQArchiveDemo/XQArchiveDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HYE5WA8QEX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = XQArchiveDemo/Info.plist;
@@ -413,7 +764,142 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = FlutterHybridDemoDis;
+				SWIFT_OBJC_BRIDGING_HEADER = "XQArchiveDemo/XQArchiveDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4E86855229E6E46008BBB73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				INFOPLIST_FILE = XQArchiveDemoToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo.XQArchiveDemoToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = XQArchiveDemoTodayDev;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4E86856229E6E46008BBB73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				INFOPLIST_FILE = XQArchiveDemoToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo.XQArchiveDemoToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = XQArchiveDemoTodayDis;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4E8686C229E6F9D008BBB73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B27B82708CE36C7ECE8706AC /* Pods-XQArchiveDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = XQArchiveDemo/XQArchiveDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "XQArchiveDemo copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "XQArchiveDemo/XQArchiveDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4E8686D229E6F9D008BBB73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2E8FEB8CEE4015AA4EE77E3 /* Pods-XQArchiveDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = XQArchiveDemo/XQArchiveDemo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "XQArchiveDemo copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "XQArchiveDemo/XQArchiveDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4E86885229E7113008BBB73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				INFOPLIST_FILE = XQArchiveDemoNotification/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo.XQArchiveDemoNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = XQArchiveDemoNotificationDev;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4E86886229E7113008BBB73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				INFOPLIST_FILE = XQArchiveDemoNotification/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQFlutterHybridDemo.XQArchiveDemoNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = XQArchiveDemoNotificationDis;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -435,6 +921,33 @@
 			buildConfigurations = (
 				A44FCDC9228E37ED003B9C58 /* Debug */,
 				A44FCDCA228E37ED003B9C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E86857229E6E46008BBB73 /* Build configuration list for PBXNativeTarget "XQArchiveDemoToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E86855229E6E46008BBB73 /* Debug */,
+				A4E86856229E6E46008BBB73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E8686B229E6F9D008BBB73 /* Build configuration list for PBXNativeTarget "XQArchiveDemoTwo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E8686C229E6F9D008BBB73 /* Debug */,
+				A4E8686D229E6F9D008BBB73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E86884229E7113008BBB73 /* Build configuration list for PBXNativeTarget "XQArchiveDemoNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E86885229E7113008BBB73 /* Debug */,
+				A4E86886229E7113008BBB73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

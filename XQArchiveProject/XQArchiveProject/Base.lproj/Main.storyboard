@@ -689,6 +689,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="700" height="300"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -709,22 +710,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACx-Sf-0OM">
-                                <rect key="frame" x="14" y="222" width="94" height="32"/>
-                                <buttonCell key="cell" type="push" title="跳转测试" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gkf-5k-Czb">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="respondsToTest:" target="XfG-lQ-9wD" id="K3w-yg-UK3"/>
-                                </connections>
-                            </button>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m7-WI-gxT">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <clipView key="contentView" id="GBf-z7-XQo">
+                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="LVo-EU-yXj">
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Ehq-EL-2Mg">
+                                                <size key="itemSize" width="300" height="250"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="RBh-f0-SDn">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="TUq-9K-dqe">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ACx-Sf-0OM" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="8op-cO-0XJ"/>
-                            <constraint firstItem="ACx-Sf-0OM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="FYD-2X-Vid"/>
+                            <constraint firstAttribute="trailing" secondItem="0m7-WI-gxT" secondAttribute="trailing" id="MTw-5z-GV4"/>
+                            <constraint firstItem="0m7-WI-gxT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="PWQ-dJ-7lo"/>
+                            <constraint firstAttribute="bottom" secondItem="0m7-WI-gxT" secondAttribute="bottom" id="iDB-TP-Ol4"/>
+                            <constraint firstItem="0m7-WI-gxT" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="wEg-PH-wiA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="LVo-EU-yXj" id="0RL-Tw-zuR"/>
+                        <outlet property="flowLayout" destination="Ehq-EL-2Mg" id="rVm-Oa-KRq"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

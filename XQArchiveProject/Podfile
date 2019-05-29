@@ -9,4 +9,7 @@ target 'XQArchiveProject' do
 
 pod 'XQProjectTool', :path => '/Users/wangxingqian/Desktop/XQWorkProject/Tool/XQProjectTool'
 
+pod 'Masonry'
+pod 'YYModel'
+
 end
