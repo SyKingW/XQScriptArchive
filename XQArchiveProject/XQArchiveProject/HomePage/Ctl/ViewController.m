@@ -18,6 +18,9 @@
 #import "XQHomePageItem.h"
 #import "XQHomePageAddItem.h"
 
+
+#import "XQTestScrollViewVC.h"
+
 #define XQ_VC_ADD @"add"
 
 
@@ -90,7 +93,8 @@
 #pragma mark - responds
 
 - (IBAction)respondsToTest:(NSButton *)sender {
-    XQTestVC *vc = [[XQTestVC alloc] initWithNibName:@"XQTestVC" bundle:nil];
+//    XQTestVC *vc = [[XQTestVC alloc] initWithNibName:@"XQTestVC" bundle:nil];
+    XQTestVC *vc = [XQTestVC new];
     [self presentViewControllerAsModalWindow:vc];
 }
 

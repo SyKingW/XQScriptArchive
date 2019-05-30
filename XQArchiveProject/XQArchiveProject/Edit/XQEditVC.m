@@ -9,6 +9,10 @@
 #import "XQEditVC.h"
 #import <XQProjectTool/XQOpenPanel.h>
 #import <XQProjectTool/XQAlertSystem.h>
+#import <Masonry/Masonry.h>
+
+#import "XQEditView.h"
+
 #import "XQArchiveProjectModel.h"
 
 #import "XQXMLParser.h"
@@ -18,6 +22,12 @@
 #import "XQMobileprovision.h"
 
 @interface XQEditVC ()
+
+/** <#note#> */
+@property (nonatomic, strong) XQEditView *editView;
+
+@property (weak) IBOutlet NSClipView *clipView;
+@property (weak) IBOutlet NSView *contentView;
 
 @property (weak) IBOutlet NSTextField *nameTF;
 @property (weak) IBOutlet NSTextField *bundleIdTF;
@@ -52,10 +62,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.editView = [XQEditView new];
+    [self.view addSubview:self.editView];
+    [self.editView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    return;
     [self initUI];
 }
 
 - (void)initUI {
+    [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.equalTo(self.clipView);
+        // 最小宽高
+        make.width.mas_greaterThanOrEqualTo(150);
+        make.height.mas_greaterThanOrEqualTo(250);
+        
+        // 设置等于父视图, 但是, 等级调为低
+        make.width.height.equalTo(self.clipView).priorityLow();
+    }];
+    
     self.nameTF.stringValue = self.archiveModel.configModel.xq_name ? self.archiveModel.configModel.xq_name : @"";
     self.bundleIdTF.stringValue = self.archiveModel.configModel.bundleId ? self.archiveModel.configModel.bundleId : @"";
     self.schemeNameTF.stringValue = self.archiveModel.configModel.schemeName ? self.archiveModel.configModel.schemeName : @"";
