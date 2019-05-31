@@ -38,8 +38,10 @@
 #pragma mark - responds
 
 - (IBAction)respondsToEdit:(NSButton *)sender {
-    XQEditVC *vc = [[XQEditVC alloc] initWithNibName:@"XQEditVC" bundle:nil];
+//    XQEditVC *vc = [[XQEditVC alloc] initWithNibName:@"XQEditVC" bundle:nil];
+    XQEditVC *vc = [XQEditVC new];
     vc.archiveModel = self.archiveModel;
+    
     [self presentViewControllerAsModalWindow:vc];
 }
 

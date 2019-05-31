@@ -18,6 +18,18 @@
 @class XCBuildConfiguration;
 NS_ASSUME_NONNULL_BEGIN
 
+
+
+/**
+ app 类型
+ */
+#define XQ_ProductType_Application @"com.apple.product-type.application"
+
+/**
+ extension 类型
+ */
+#define XQ_ProductType_AppExtension @"com.apple.product-type.app-extension"
+
 @interface PBXTarget : PBXObject
 
 @property (nonatomic, strong) NSMutableArray<PBXTargetDependency *> *dependencies;

@@ -11,7 +11,6 @@
 		A487B9BA229BBA240013686F /* XQHomePageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A487B9B8229BBA240013686F /* XQHomePageItem.m */; };
 		A487B9BB229BBA240013686F /* XQHomePageItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A487B9B9229BBA240013686F /* XQHomePageItem.xib */; };
 		A487B9C0229BC67F0013686F /* XQEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A487B9BE229BC67F0013686F /* XQEditVC.m */; };
-		A487B9C1229BC67F0013686F /* XQEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A487B9BF229BC67F0013686F /* XQEditVC.xib */; };
 		A487B9C5229BC71C0013686F /* XQHomePageAddItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A487B9C3229BC71C0013686F /* XQHomePageAddItem.m */; };
 		A487B9C6229BC71C0013686F /* XQHomePageAddItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A487B9C4229BC71C0013686F /* XQHomePageAddItem.xib */; };
 		A487B9D2229BE0FF0013686F /* xq_xcode.sh in Resources */ = {isa = PBXBuildFile; fileRef = A487B9C8229BE0FF0013686F /* xq_xcode.sh */; };
@@ -60,9 +59,11 @@
 		A4C61137229D22BD00754194 /* XQEntitlementsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C61136229D22BD00754194 /* XQEntitlementsModel.m */; };
 		A4D1350C229FBC8100609D2E /* XQTestScrollViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D1350A229FBC8100609D2E /* XQTestScrollViewVC.m */; };
 		A4D1350D229FBC8100609D2E /* XQTestScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1350B229FBC8100609D2E /* XQTestScrollViewVC.xib */; };
-		A4D13510229FD36900609D2E /* NSClipView+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D1350F229FD36900609D2E /* NSClipView+Test.m */; };
 		A4D13516229FDC1800609D2E /* XQEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D13515229FDC1800609D2E /* XQEditView.m */; };
 		A4D13519229FDEAA00609D2E /* XQEditMobileprovisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D13518229FDEAA00609D2E /* XQEditMobileprovisionView.m */; };
+		A4E7DA2E22A0D16100A76788 /* NSViewController+XQLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */; };
+		A4E7DA3022A0DB9900A76788 /* XQEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */; };
+		A4E7DA3422A0DC1300A76788 /* XQLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7DA3322A0DC1300A76788 /* XQLabel.m */; };
 		A4E86837229E2C24008BBB73 /* XQArchivePlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E86836229E2C24008BBB73 /* XQArchivePlistModel.m */; };
 		A4E8683F229E4C32008BBB73 /* XQArchiveProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E8683E229E4C32008BBB73 /* XQArchiveProjectModel.m */; };
 		A4E86842229E4DD6008BBB73 /* XQArchiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E86841229E4DD6008BBB73 /* XQArchiveModel.m */; };
@@ -78,7 +79,6 @@
 		A487B9B9229BBA240013686F /* XQHomePageItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQHomePageItem.xib; sourceTree = "<group>"; };
 		A487B9BD229BC67F0013686F /* XQEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQEditVC.h; sourceTree = "<group>"; };
 		A487B9BE229BC67F0013686F /* XQEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditVC.m; sourceTree = "<group>"; };
-		A487B9BF229BC67F0013686F /* XQEditVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQEditVC.xib; sourceTree = "<group>"; };
 		A487B9C2229BC71C0013686F /* XQHomePageAddItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQHomePageAddItem.h; sourceTree = "<group>"; };
 		A487B9C3229BC71C0013686F /* XQHomePageAddItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQHomePageAddItem.m; sourceTree = "<group>"; };
 		A487B9C4229BC71C0013686F /* XQHomePageAddItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQHomePageAddItem.xib; sourceTree = "<group>"; };
@@ -166,12 +166,15 @@
 		A4D13509229FBC8100609D2E /* XQTestScrollViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQTestScrollViewVC.h; sourceTree = "<group>"; };
 		A4D1350A229FBC8100609D2E /* XQTestScrollViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQTestScrollViewVC.m; sourceTree = "<group>"; };
 		A4D1350B229FBC8100609D2E /* XQTestScrollViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQTestScrollViewVC.xib; sourceTree = "<group>"; };
-		A4D1350E229FD36900609D2E /* NSClipView+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSClipView+Test.h"; sourceTree = "<group>"; };
-		A4D1350F229FD36900609D2E /* NSClipView+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSClipView+Test.m"; sourceTree = "<group>"; };
 		A4D13514229FDC1800609D2E /* XQEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQEditView.h; sourceTree = "<group>"; };
 		A4D13515229FDC1800609D2E /* XQEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditView.m; sourceTree = "<group>"; };
 		A4D13517229FDEAA00609D2E /* XQEditMobileprovisionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQEditMobileprovisionView.h; sourceTree = "<group>"; };
 		A4D13518229FDEAA00609D2E /* XQEditMobileprovisionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditMobileprovisionView.m; sourceTree = "<group>"; };
+		A4E7DA2C22A0D16100A76788 /* NSViewController+XQLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSViewController+XQLoadView.h"; sourceTree = "<group>"; };
+		A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSViewController+XQLoadView.m"; sourceTree = "<group>"; };
+		A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XQEditVC.xib; sourceTree = "<group>"; };
+		A4E7DA3222A0DC1300A76788 /* XQLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQLabel.h; sourceTree = "<group>"; };
+		A4E7DA3322A0DC1300A76788 /* XQLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQLabel.m; sourceTree = "<group>"; };
 		A4E86835229E2C24008BBB73 /* XQArchivePlistModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XQArchivePlistModel.h; path = XQArchiveProject/HomePage/Model/XQArchivePlistModel.h; sourceTree = SOURCE_ROOT; };
 		A4E86836229E2C24008BBB73 /* XQArchivePlistModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XQArchivePlistModel.m; path = XQArchiveProject/HomePage/Model/XQArchivePlistModel.m; sourceTree = SOURCE_ROOT; };
 		A4E8683D229E4C32008BBB73 /* XQArchiveProjectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQArchiveProjectModel.h; sourceTree = "<group>"; };
@@ -207,8 +210,11 @@
 		A487B9B3229BB0410013686F /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A4E7DA3122A0DC0500A76788 /* XQLabel */,
 				A4C6111C229D170C00754194 /* ProfilesNode */,
 				A4C610CB229D093700754194 /* PBXProjectManager */,
+				A4E7DA2C22A0D16100A76788 /* NSViewController+XQLoadView.h */,
+				A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -218,9 +224,9 @@
 			children = (
 				A487B9BD229BC67F0013686F /* XQEditVC.h */,
 				A487B9BE229BC67F0013686F /* XQEditVC.m */,
-				A487B9BF229BC67F0013686F /* XQEditVC.xib */,
 				A4D13514229FDC1800609D2E /* XQEditView.h */,
 				A4D13515229FDC1800609D2E /* XQEditView.m */,
+				A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */,
 				A4D13517229FDEAA00609D2E /* XQEditMobileprovisionView.h */,
 				A4D13518229FDEAA00609D2E /* XQEditMobileprovisionView.m */,
 			);
@@ -333,8 +339,6 @@
 				A4D13509229FBC8100609D2E /* XQTestScrollViewVC.h */,
 				A4D1350A229FBC8100609D2E /* XQTestScrollViewVC.m */,
 				A4D1350B229FBC8100609D2E /* XQTestScrollViewVC.xib */,
-				A4D1350E229FD36900609D2E /* NSClipView+Test.h */,
-				A4D1350F229FD36900609D2E /* NSClipView+Test.m */,
 			);
 			path = XQTestVC;
 			sourceTree = "<group>";
@@ -469,6 +473,15 @@
 			path = XQMobileprovision;
 			sourceTree = "<group>";
 		};
+		A4E7DA3122A0DC0500A76788 /* XQLabel */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7DA3222A0DC1300A76788 /* XQLabel.h */,
+				A4E7DA3322A0DC1300A76788 /* XQLabel.m */,
+			);
+			path = XQLabel;
+			sourceTree = "<group>";
+		};
 		C23DE508D5B6DFA1BF61CA43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,7 +565,6 @@
 			files = (
 				A487B9D3229BE0FF0013686F /* xq_plist.sh in Resources */,
 				A487B9D8229BE0FF0013686F /* xq_archive.sh in Resources */,
-				A487B9C1229BC67F0013686F /* XQEditVC.xib in Resources */,
 				A487B9D4229BE0FF0013686F /* xq_test.sh in Resources */,
 				A487B9C6229BC71C0013686F /* XQHomePageAddItem.xib in Resources */,
 				A4D1350D229FBC8100609D2E /* XQTestScrollViewVC.xib in Resources */,
@@ -562,6 +574,7 @@
 				A487B9D9229BE0FF0013686F /* xq_bugly.sh in Resources */,
 				A487B9BB229BBA240013686F /* XQHomePageItem.xib in Resources */,
 				A4968C6D228E879C004ED08A /* XQTestVC.xib in Resources */,
+				A4E7DA3022A0DB9900A76788 /* XQEditVC.xib in Resources */,
 				A487B9D5229BE0FF0013686F /* xq_upload.sh in Resources */,
 				A4968C56228E8611004ED08A /* Main.storyboard in Resources */,
 			);
@@ -639,9 +652,9 @@
 				A4C61134229D21E700754194 /* XQMobileprovisionModel.m in Sources */,
 				A4C6110B229D093700754194 /* PBXTargetDependency.m in Sources */,
 				A4D1350C229FBC8100609D2E /* XQTestScrollViewVC.m in Sources */,
+				A4E7DA3422A0DC1300A76788 /* XQLabel.m in Sources */,
 				A4968C59228E8611004ED08A /* main.m in Sources */,
 				A4C61107229D093700754194 /* PBXBuildPhases.m in Sources */,
-				A4D13510229FD36900609D2E /* NSClipView+Test.m in Sources */,
 				A4C61115229D093700754194 /* PBXNavigatorItem.m in Sources */,
 				A4C61137229D22BD00754194 /* XQEntitlementsModel.m in Sources */,
 				A4C61129229D1B6200754194 /* NSData+JKBase64.m in Sources */,
@@ -660,6 +673,7 @@
 				A4C61113229D093700754194 /* PBXGroup.m in Sources */,
 				A4C61108229D093700754194 /* PBXSourcesBuildPhase.m in Sources */,
 				A4C61109229D093700754194 /* PBXFrameworksBuildPhase.m in Sources */,
+				A4E7DA2E22A0D16100A76788 /* NSViewController+XQLoadView.m in Sources */,
 				A4C6111A229D093800754194 /* PBXCompare.m in Sources */,
 				A4C6110F229D093700754194 /* PBXAggregateTarget.m in Sources */,
 				A4C6110E229D093700754194 /* PBXNativeTarget.m in Sources */,

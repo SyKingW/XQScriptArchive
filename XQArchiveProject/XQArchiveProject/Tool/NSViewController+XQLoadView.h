@@ -1,8 +1,8 @@
 //
-//  NSClipView+Test.h
+//  NSViewController+XQLoadView.h
 //  XQArchiveProject
 //
-//  Created by WXQ on 2019/5/30.
+//  Created by WXQ on 2019/5/31.
 //  Copyright © 2019 WXQ. All rights reserved.
 //
 
@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSClipView (Test)
+@interface NSViewController (XQLoadView)
+
+
 
 @end
 

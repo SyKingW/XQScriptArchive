@@ -35,6 +35,7 @@
     return muArr;
 }
 
+
 + (NSArray <XQMobileprovisionModel *> *)getSystemMobileprovisionsWithBundleId:(NSString *)bundleId error:(NSError **)error {
     if (!bundleId) {
         return nil;
@@ -45,6 +46,7 @@
     if (*error) {
         return nil;
     }
+    
     for (XQMobileprovisionModel *model in arr) {
         if ([model.Entitlements.applicationIdentifier hasSuffix:bundleId]) {
             [muArr addObject:model];
@@ -52,6 +54,34 @@
     }
     return muArr;
 }
+
+
+/**
+ 获取某个 bundle id 的 Mobileprovision 信息
+ */
++ (XQMobileprovision *)getSystemMobileprovisionsCollectionWithBundleId:(NSString *)bundleId error:(NSError **)error {
+    
+    NSArray <XQMobileprovisionModel *> *modelArr = [self getSystemMobileprovisionsWithBundleId:bundleId error:error];
+    
+    XQMobileprovision *mobileprovision = [XQMobileprovision new];
+    NSMutableArray *devArr = [NSMutableArray array];
+    NSMutableArray *disArr = [NSMutableArray array];
+    
+    for (XQMobileprovisionModel *model in modelArr) {
+        if ([model.Entitlements.applicationIdentifier hasSuffix:bundleId]) {
+            if ([model.Entitlements.apsEnvironment isEqualToString:XQ_EntitlementsModel_ApsE_Production]) {
+                [disArr addObject:model];
+            }else {
+                [devArr addObject:model];
+            }
+        }
+    }
+    
+    mobileprovision.devModelArr = devArr;
+    mobileprovision.devModelArr = disArr;
+    return mobileprovision;
+}
+
 
 + (NSString *)getSystemNormalPath {
     
@@ -76,6 +106,7 @@
 
 
 
+
 + (NSDictionary *)getMobileprovisionWithFilepath:(NSString *)filePath plistString:(NSString *_Nullable*_Nullable)plistString {
     if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
         NSData *rawData = [NSData dataWithContentsOfFile:filePath];
@@ -95,7 +126,10 @@
     }
     
     NSString *startString = @"<?xml version";
-    NSString *endString = @"</plist>";
+    
+//    NSString *endString = @"</plist>";
+    NSString *endString = @"</Scheme>";
+    
     
     NSData *startData = [NSData dataWithBytes:[startString UTF8String] length:startString.length];
     NSData *endData = [NSData dataWithBytes:[endString UTF8String] length:endString.length];

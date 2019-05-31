@@ -13,6 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XQMobileprovision : NSObject
 
+/** <#note#> */
+@property (nonatomic, copy) NSString *applicationIdentifier;
+
+/** <#note#> */
+@property (nonatomic, copy) NSArray <XQMobileprovisionModel *> *disModelArr;
+/** <#note#> */
+@property (nonatomic, copy) NSArray <XQMobileprovisionModel *> *devModelArr;
+
 /**
  获取当前系统下面所有的 Mobileprovision 信息
  */
@@ -22,6 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
  获取某个 bundle id 的 Mobileprovision 信息
  */
 + (NSArray <XQMobileprovisionModel *> *)getSystemMobileprovisionsWithBundleId:(NSString *)bundleId error:(NSError **)error;
+
+/**
+ 获取某个 bundle id 的 Mobileprovision 信息
+ */
++ (XQMobileprovision *)getSystemMobileprovisionsCollectionWithBundleId:(NSString *)bundleId error:(NSError **)error;
 
 /**
  获取 .mobileprovision 信息

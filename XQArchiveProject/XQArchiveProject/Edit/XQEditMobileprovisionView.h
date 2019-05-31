@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSTextField *mobileprovisionTF;
 @property (nonatomic, strong) NSTextField *mobileprovisionDescriptTF;
 
+@property (nonatomic, strong) NSButton *mobileprovisionBtn;
+
 @end
 
 NS_ASSUME_NONNULL_END

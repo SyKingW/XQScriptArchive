@@ -9,20 +9,26 @@
 #import <Foundation/Foundation.h>
 #import <YYModel/YYModel.h>
 
+#define XQ_EntitlementsModel_ApsE_Production @"production"
+#define XQ_EntitlementsModel_ApsE_Development @"development"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XQEntitlementsModel : NSObject
 
-/** bundle id */
+/** teamId.bundleId */
 @property (nonatomic, copy) NSString *applicationIdentifier;
-/** 生成 or 开发 */
+/**
+ production: 生产描述
+ development: 开发描述
+ */
 @property (nonatomic, copy) NSString *apsEnvironment;
 /** <#note#> */
-@property (nonatomic, copy) NSString *betaReportsActive;
-/** <#note#> */
+@property (nonatomic, assign) BOOL betaReportsActive;
+/** teamId */
 @property (nonatomic, copy) NSString *comAppleDeveloperTeamIdentifier;
 /** <#note#> */
-@property (nonatomic, copy) NSString *getTaskAllow;
+@property (nonatomic, assign) BOOL getTaskAllow;
 /** <#note#> */
 @property (nonatomic, copy) NSString *keychainAccessGroups;
 
