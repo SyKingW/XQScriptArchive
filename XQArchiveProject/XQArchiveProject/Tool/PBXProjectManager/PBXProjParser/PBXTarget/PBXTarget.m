@@ -22,6 +22,9 @@
 
 #import "PBXProjParser.h"
 
+// wxq
+#import "PBXBuildFile.h"
+
 @interface PBXTarget ()
 
 @property (nonatomic, strong) NSMutableDictionary *buildConfigs;
@@ -171,6 +174,78 @@
     [self.data[@"buildPhases"] addObject:buildPhase.objectId];
 }
 
+- (NSArray <PBXTarget *> *)xq_getExtensionTargets {
+    NSString *productType = self.rawData[@"productType"];
+    
+    // 不是app
+    if (![productType isEqualToString:XQ_ProductType_Application]) {
+        return nil;
+    }
+    
+    NSMutableArray *muArr = [NSMutableArray array];
+    
+    for (PBXBuildPhases *buildPhases in self.buildPhases) {
+        
+        /**
+         根据 isa 执行来判断
+         
+         PBXShellScriptBuildPhase: 脚本
+         PBXSourcesBuildPhase: 源码资源
+         PBXFrameworksBuildPhase: framework
+         PBXResourcesBuildPhase: 资源文件
+         PBXCopyFilesBuildPhase: extension (系统默认 name: Embed App Extensions)
+         */
+        if ([[buildPhases getISA] isEqualToString:@"PBXCopyFilesBuildPhase"]) {
+            // 获取到项目依赖的库, 从这里面筛选出来 Extension
+            for (PBXBuildFile *file in buildPhases.files) {
+                NSString *targetId = file.rawData[@"fileRef"];
+                
+                for (PBXTarget *target in [PBXProjParser sharedInstance].project.targets) {
+                    if ([target.rawData[@"productReference"] isEqualToString:targetId]) {
+                        
+                        // 再判断一下是否是扩展
+                        if ([target.rawData[@"productType"] isEqualToString:XQ_ProductType_AppExtension]) {
+//                            NSLog(@"找到引用的 target 了: %@", target.rawData);
+                            [muArr addObject:target];
+                        }
+                        break;
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    return muArr;
+}
+
+- (NSString *)xq_getDevProfileName {
+    for (XCBuildConfiguration *bc in self.buildConfigurationList.buildConfigurations) {
+        if ([[bc getName] isEqualToString:@"Debug"]) {
+            NSString *profileName = [bc getBuildSetting:@"PROVISIONING_PROFILE_SPECIFIER"];
+            return profileName;
+        }
+    }
+    return nil;
+}
+
+- (NSString *)xq_getDisProfileName {
+    for (XCBuildConfiguration *bc in self.buildConfigurationList.buildConfigurations) {
+        if ([[bc getName] isEqualToString:@"Release"]) {
+            NSString *profileName = [bc getBuildSetting:@"PROVISIONING_PROFILE_SPECIFIER"];
+            return profileName;
+        }
+    }
+    return nil;
+}
+
+- (NSString *)xq_getbundleId {
+    XCBuildConfiguration *bc = self.buildConfigurationList.buildConfigurations.firstObject;
+    return [bc getBuildSetting:@"PRODUCT_BUNDLE_IDENTIFIER"];
+}
+
+#pragma mark - wxq get
+
 - (NSMutableDictionary *)buildConfigs
 {
     if (!_buildConfigs)
@@ -179,6 +254,9 @@
     }
     return _buildConfigs;
 }
+
+
+
 
 
 

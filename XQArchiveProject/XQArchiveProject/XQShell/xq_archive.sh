@@ -16,8 +16,6 @@ basedir=$(
 )
 echo "basedir: $basedir"
 
-
-
 # 获取json配置数据
 
 # 配置文件夹路径
@@ -46,7 +44,7 @@ if [ ! -f $xq_jq ]; then
 fi
 
 if [ ! -f ~/.bash_profile ]; then
-#跳出函数
+    #跳出函数
     echo "error: 不存在 bash_profile"
 else
     source ~/.profile
@@ -54,8 +52,6 @@ else
     source ~/.bashrc
     source ~/.mkshrc
 fi
-
-
 
 # 打印所有配置
 echo "配置: $(${xq_jq} . ${xqConfigJsonPath})"
@@ -87,9 +83,6 @@ xq_bundleID=$($xq_jq .bundleId $xqConfigJsonPath)
 # 团队id, 生产证书最后的括号里面有
 xq_teamID=$($xq_jq .teamId $xqConfigJsonPath)
 
-# 生产证书的名字, 因为有空格, 所以要用引号括起来
-xq_signingCertificate=$($xq_jq .signingCertificate $xqConfigJsonPath)
-
 #项目plist文件所在路径, 这个是拿来自增bundle version的
 projectPlist_path=$($xq_jq .projectPlistPath $xqConfigJsonPath)
 
@@ -108,9 +101,6 @@ xcarchivePath=$($xq_jq .xcarchivePath $xqConfigJsonPath)
 # .ipa 文件
 ipaPath=$($xq_jq .ipaPath $xqConfigJsonPath)
 
-# 签名模式
-codeSignStyle=$($xq_jq .codeSignStyle $xqConfigJsonPath)
-
 # 是否生成 dsym
 generateDSYM=$($xq_jq .generateDSYM $xqConfigJsonPath)
 
@@ -128,7 +118,6 @@ plistAutoIncrement=$($xq_jq .plistAutoIncrement $xqConfigJsonPath)
 # 正式 mobileprovision 的唯一标示
 mobileprovisionUUID=$($xq_jq .mobileprovisionUUID $xqConfigJsonPath)
 
-
 ####### 上传App Store的修改
 #开发账号
 appleID=$($xq_jq .appleId $xqConfigJsonPath)
@@ -138,8 +127,6 @@ appleIDPwd=$($xq_jq .appleIdPwd $xqConfigJsonPath)
 ####### 上传Fir的修改
 #上传fir的token
 firToken=$($xq_jq .firToken $xqConfigJsonPath) #bc73c2a04554624e979e5c0b692bd710
-
-
 
 # 判断是否为空
 # $1 判断的字符串
@@ -159,20 +146,17 @@ xq_isEmpty $xcworkspace_path xcworkspace_path
 xq_isEmpty $scheme_name scheme_name
 xq_isEmpty $xq_bundleID xq_bundleID
 xq_isEmpty $xq_teamID xq_teamID
-xq_isEmpty $xq_signingCertificate xq_signingCertificate
 xq_isEmpty $projectPlist_path projectPlist_path
 xq_isEmpty $build_path build_path
 xq_isEmpty $archiveMode archiveMode
 xq_isEmpty $xq_exportOptionsPlistPath xq_exportOptionsPlistPath
 xq_isEmpty $generateDSYM generateDSYM
-xq_isEmpty $codeSignStyle codeSignStyle
 
 # 把 " 去掉
 xcworkspace_path=${xcworkspace_path//"\""/}
 scheme_name=${scheme_name//"\""/}
 xq_bundleID=${xq_bundleID//"\""/}
 xq_teamID=${xq_teamID//"\""/}
-xq_signingCertificate=${xq_signingCertificate//"\""/}
 projectPlist_path=${projectPlist_path//"\""/}
 build_path=${build_path//"\""/}
 archiveMode=${archiveMode//"\""/}
@@ -183,8 +167,6 @@ upAppStore=${upAppStore//"\""/}
 buildMode=${buildMode//"\""/}
 dSYMFolderPath=${dSYMFolderPath//"\""/}
 generateDSYM=${generateDSYM//"\""/}
-codeSignStyle=${codeSignStyle//"\""/}
-
 
 # $1 要判断的字符串
 function xq_assignment() {
@@ -254,30 +236,44 @@ mobileprovisionUUID=$xq_result
 
 # ${var:-null} 如果是 var 是空值, 那么默认取得为 null, 不过这个解决不了 "" 问题, 所以还是按照现在的来吧
 
+#echo "1: $xcodeprojPath"
+#echo "2: $xcworkspace_path"
+#echo "3: $scheme_name"
+#echo "4: $xq_bundleID"
+#echo "5: $xq_teamID"
+#echo "6: $projectPlist_path"
+#echo "7: $build_path"
+#echo "8: $archiveMode"
+#echo "9: $xq_exportOptionsPlistPath"
+#echo "10: $appleID"
+#echo "11: $appleIDPwd"
+#echo "12: $firToken"
+#echo "13: $buildMode"
+
+
 source ${xq_DIR1}/xq_shell.sh \
-    ${xcodeprojPath} \
-    ${xcworkspace_path} \
-    ${scheme_name} \
-    ${xq_bundleID} \
-    ${xq_teamID} \
-    "${xq_signingCertificate}" \
-    ${projectPlist_path} \
-    ${build_path} \
-    ${archiveMode} \
-    ${xq_exportOptionsPlistPath} \
-    ${appleID} \
-    ${appleIDPwd} \
-    ${firToken} \
-    ${buildMode} \
-    ${upAppStore} \
-    ${upFir} \
-    ${xcarchivePath} \
-    ${ipaPath} \
-    ${buglyUploadDSYM} \
-    ${dSYMFolderPath} \
-    ${buglyAppId} \
-    ${buglyAppKey} \
-    ${symbolOutputPath} \
-    ${buglyAppVersions} \
-    ${plistAutoIncrement} \
-    ${generateDSYM}
+    "${xcodeprojPath:-null}" \
+    "${xcworkspace_path:-null}" \
+    "${scheme_name:-null}" \
+    ${xq_bundleID:-null} \
+    ${xq_teamID:-null} \
+    "${projectPlist_path:-null}" \
+    "${build_path:-null}" \
+    ${archiveMode:-null} \
+    "${xq_exportOptionsPlistPath:-null}" \
+    ${appleID:-null} \
+    ${appleIDPwd:-null} \
+    ${firToken:-null} \
+    ${buildMode:-null} \
+    ${upAppStore:-null} \
+    ${upFir:-null} \
+    "${xcarchivePath:-null}" \
+    "${ipaPath:-null}" \
+    ${buglyUploadDSYM:-null} \
+    "${dSYMFolderPath:-null}" \
+    ${buglyAppId:-null} \
+    ${buglyAppKey:-null} \
+    ${symbolOutputPath:-null} \
+    ${buglyAppVersions:-null} \
+    ${plistAutoIncrement:-null} \
+    ${generateDSYM:-null}

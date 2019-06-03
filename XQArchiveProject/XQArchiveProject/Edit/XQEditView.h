@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "XQEditMobileprovisionView.h"
-#import "XQMobileprovisionModel.h"
+#import "XQEditVCProfileModel.h"
 
 @class XQEditView;
 
@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol XQEditViewDelegate <NSObject>
 
 - (void)editView:(XQEditView *)editView didSelectConvenientConfig:(NSButton *)sender;
+- (void)editView:(XQEditView *)editView didSelectSaveConfig:(NSButton *)sender;
+- (void)editView:(XQEditView *)editView didSelectChangeTarget:(NSPopUpButton *)sender;
+
 
 @end
 
@@ -43,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
  项目有多个target, 这个是选择某个target的
  */
 @property (nonatomic, strong) NSTextField *currentTargetTF;
-@property (nonatomic, strong) NSButton *targetBtn;
+@property (nonatomic, strong) NSPopUpButton *targetBtn;
 @property (nonatomic, strong) NSTextField *targetDescriptTF;
 
 @property (nonatomic, strong) NSTextField *bundleIdTF;
@@ -61,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSMutableArray <XQEditMobileprovisionView *> *mobileprovisionArrView;
 /** 设置这个, mobile view 就刷新 mobile view */
-@property (nonatomic, copy) NSArray <XQMobileprovisionModel *> *mobileprovisionModelArr;
+@property (nonatomic, copy) NSArray <XQEditVCProfileModel *> *mobileprovisionModelArr;
 
 
 @property (nonatomic, strong) NSView *otherView;

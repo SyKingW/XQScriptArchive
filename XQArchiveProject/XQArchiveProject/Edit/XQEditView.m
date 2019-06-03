@@ -133,7 +133,10 @@
         make.leading.trailing.height.equalTo(self.projectNameTF);
     }];
     
-    self.targetBtn = [NSButton buttonWithTitle:@"切换target" target:self action:@selector(respondsToTarget:)];
+    self.targetBtn = [[NSPopUpButton alloc] initWithFrame:CGRectZero pullsDown:YES];
+    [self.targetBtn setTarget:self];
+    [self.targetBtn setAction:@selector(respondsToTarget:)];
+    
     [self.baseInfoView addSubview:self.targetBtn];
     [self.targetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.currentTargetTF.mas_right).offset(10);
@@ -190,7 +193,7 @@
     [self.contentView addSubview:self.mobileprovisionView];
     [self.mobileprovisionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.baseInfoView.mas_bottom).offset(10);
-        make.leading.trailing.equalTo(self.contentView);
+        make.leading.trailing.equalTo(self.baseInfoView);
     }];
     
     self.automaticBtn = [NSButton checkboxWithTitle:@"Automatic (签名模式) " target:self action:@selector(respondsToAutomatic:)];
@@ -384,7 +387,7 @@
 
 - (void)refreshMobileprovisionView {
     // 移除所有
-    NSArray *arr = self.mobileprovisionView.subviews;
+    NSArray *arr = self.mobileprovisionView.subviews.copy;
     for (NSView *view in arr) {
         [view removeFromSuperview];
     }
@@ -396,7 +399,7 @@
         // 自动模式下, 不用描述文件
         [self.automaticBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mobileprovisionView).offset(10);
-            make.leading.trailing.equalTo(self.mobileprovisionView).offset(10);
+            make.left.equalTo(self.mobileprovisionView);
             make.bottom.equalTo(self.mobileprovisionView).offset(-10);
         }];
         
@@ -404,18 +407,19 @@
         
         [self.automaticBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mobileprovisionView).offset(10);
-            make.left.equalTo(self.mobileprovisionView).offset(10);
+            make.left.equalTo(self.mobileprovisionView);
         }];
         
         for (int i = 0; i < self.mobileprovisionModelArr.count; i++) {
-            XQMobileprovisionModel *model = self.mobileprovisionModelArr[i];
+            XQEditVCProfileModel *model = self.mobileprovisionModelArr[i];
             
             XQEditMobileprovisionView *emView = [XQEditMobileprovisionView new];
-            emView.mobileprovisionTF.stringValue = model.Name;
-            emView.mobileprovisionDescriptTF.stringValue = model.Entitlements.applicationIdentifier;
-            [self addSubview:emView];
-            
+            [self.mobileprovisionView addSubview:emView];
             [self.mobileprovisionArrView addObject:emView];
+            
+            emView.mobileprovisionDescriptTF.stringValue = model.bundleId;
+            emView.mobileprovisionDevTF.stringValue = model.dev;
+            emView.mobileprovisionDisTF.stringValue = model.dis;
             
             // 获取上一个
             XQEditMobileprovisionView *oEMView = nil;
@@ -465,11 +469,11 @@
 }
 
 - (void)respondsToDone:(NSButton *)sender {
-//    [self.delegate editView:self didSelectConvenientConfig:sender];
+    [self.delegate editView:self didSelectSaveConfig:sender];
 }
 
-- (void)respondsToTarget:(NSButton *)sender {
-    
+- (void)respondsToTarget:(NSPopUpButton *)sender {
+    [self.delegate editView:self didSelectChangeTarget:sender];
 }
 
 - (void)respondsToRelease:(NSButton *)sender {
@@ -502,7 +506,7 @@
 
 #pragma mark - set
 
-- (void)setMobileprovisionModelArr:(NSArray<XQMobileprovisionModel *> *)mobileprovisionModelArr {
+- (void)setMobileprovisionModelArr:(NSArray<XQEditVCProfileModel *> *)mobileprovisionModelArr {
     _mobileprovisionModelArr = mobileprovisionModelArr;
     [self refreshMobileprovisionView];
 }

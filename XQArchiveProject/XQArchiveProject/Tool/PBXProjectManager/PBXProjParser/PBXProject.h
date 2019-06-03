@@ -24,6 +24,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) XCConfigurationList *buildConfigurationList;
 
+
+/**
+ wxq 获取项目中所有 app target
+ */
+- (NSArray <PBXTarget *> *)xq_getAppTargets;
+
+/**
+ wxq 获取某个 bundle id 的 target
+ */
+- (PBXTarget *)xq_getAppTargetWithBundleId:(NSString *)bundleId;
+
 @end
 
 NS_ASSUME_NONNULL_END

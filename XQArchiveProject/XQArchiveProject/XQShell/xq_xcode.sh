@@ -15,8 +15,6 @@ function createXcarchiveFile() {
     projectPlist_path=$5
     generateDSYM=$6
 
-    echo '各个参数'${development_mode} ${xcworkspace_path} ${scheme_name} ${build_path} ${projectPlist_path}
-
     echo '-----------'
     echo '该次编译mode:'${development_mode}
     echo '-----------'
@@ -30,12 +28,12 @@ function createXcarchiveFile() {
     echo "Save .Xcarchive Path: $7"
 
     echo '-----------'
-    echo ' 正在清理工程 '
+    echo ' 开始清理工程 '
     echo '-----------'
     xcodebuild \
         clean \
-        -workspace ${xcworkspace_path} \
-        -scheme ${scheme_name} \
+        -workspace "${xcworkspace_path}" \
+        -scheme "${scheme_name}" \
         -configuration ${development_mode} -quiet || exit
     echo '--------'
     echo ' 清理完成 '
@@ -43,17 +41,17 @@ function createXcarchiveFile() {
     echo ''
     
     directionPath=$7
-    xcarchive_path=${directionPath}/${scheme_name}.xcarchive
+    xcarchive_path="${directionPath}/${scheme_name}.xcarchive"
 
-    dSYMFolderPath=${directionPath}/dSYM
+    dSYMFolderPath="${directionPath}/dSYM"
 
     #判断文件夹是否已创建, -d文件夹, -f文件
-    if [ ! -d .${directionPath} ]; then
-        mkdir -p $directionPath
+    if [ ! -d ".${directionPath}" ]; then
+        mkdir -p "$directionPath"
     fi
 
-    if [ ! -d .${dSYMFolderPath} ]; then
-        mkdir -p $dSYMFolderPath
+    if [ ! -d ".${dSYMFolderPath}" ]; then
+        mkdir -p "$dSYMFolderPath"
     fi
 
     #开始编译
@@ -64,11 +62,11 @@ function createXcarchiveFile() {
         echo '-----------'
         # DEBUG 编译没有出来dSYM, 是因为配置问题, 这里直接改配置就好 DEBUG_INFORMATION_FORMAT='dwarf-with-dsym'
         xcodebuild archive \
-            -workspace ${xcworkspace_path} \
-            -scheme ${scheme_name} \
+            -workspace "${xcworkspace_path}" \
+            -scheme "${scheme_name}" \
             -configuration ${development_mode} \
-            -archivePath ${xcarchive_path} \
-            -sdk iphoneos build DWARF_DSYM_FOLDER_PATH=${dSYMFolderPath} DEBUG_INFORMATION_FORMAT='dwarf-with-dsym' \
+            -archivePath "${xcarchive_path}" \
+            -sdk iphoneos build DWARF_DSYM_FOLDER_PATH="${dSYMFolderPath}" DEBUG_INFORMATION_FORMAT='dwarf-with-dsym' \
             -quiet || exit
     else
 
@@ -76,10 +74,10 @@ function createXcarchiveFile() {
         echo ' 正在编译工程'
         echo '-----------'
         xcodebuild archive \
-            -workspace ${xcworkspace_path} \
-            -scheme ${scheme_name} \
+            -workspace "${xcworkspace_path}" \
+            -scheme "${scheme_name}" \
             -configuration ${development_mode} \
-            -archivePath ${xcarchive_path} \
+            -archivePath "${xcarchive_path}" \
             -quiet || exit 0
 
         # 只有 xxx.xcodeproj 用这个
@@ -108,9 +106,23 @@ function createXcarchiveFile() {
 
     fi
 
-    echo '--------'
-    echo ' 编译完成'
-    echo '--------'
+if [ -e "$xcarchive_path" ]; then
+
+echo '--------'
+echo ' 编译完成'
+echo '--------'
+
+else
+
+echo '--------'
+echo ' 编译失败 '
+echo '--------'
+
+exit
+
+fi
+
+
 
     # 不能用return, 一般return是返回0, 1, 表示执行成功或失败
     #return $xcarchive_path;
@@ -156,17 +168,17 @@ xq_allowProvisioningUpdates=$xq_value
     echo "allowProvisioningUpdates: $xq_allowProvisioningUpdates"
 
     #导出.ipa文件所在路径
-    exportIpaPath=${exportIpaFolderPath}
+    exportIpaPath="${exportIpaFolderPath}"
 
     if [ $xq_allowProvisioningUpdates == automatic ]; then
         echo "automatic 签名打包"
         #把xcarchive编译成ipa
         xcodebuild \
         -exportArchive \
-        -archivePath ${xcarchive_path} \
+        -archivePath "${xcarchive_path}" \
         -configuration ${development_mode} \
-        -exportPath ${exportIpaPath} \
-        -exportOptionsPlist ${exportOptionsPlistPath} \
+        -exportPath "${exportIpaPath}" \
+        -exportOptionsPlist "${exportOptionsPlistPath}" \
         -allowProvisioningUpdates true \
         -quiet || exit 0
 
@@ -177,10 +189,10 @@ xq_allowProvisioningUpdates=$xq_value
         #把xcarchive编译成ipa
         xcodebuild \
         -exportArchive \
-        -archivePath ${xcarchive_path} \
+        -archivePath "${xcarchive_path}" \
         -configuration ${development_mode} \
-        -exportPath ${exportIpaPath} \
-        -exportOptionsPlist ${exportOptionsPlistPath} \
+        -exportPath "${exportIpaPath}" \
+        -exportOptionsPlist "${exportOptionsPlistPath}" \
         -quiet || exit 0
 
     fi
@@ -188,10 +200,10 @@ xq_allowProvisioningUpdates=$xq_value
 
 
     #ipa包路径
-    ipaPath=${exportIpaPath}/${scheme_name}.ipa
+    ipaPath="${exportIpaPath}/${scheme_name}.ipa"
 
     #判断包是否存在, 不存在则表示打包失败
-    if [ -e $ipaPath ]; then
+    if [ -e "$ipaPath" ]; then
         echo '----------'
         echo ' ipa包已导出'
         echo '----------'
@@ -202,12 +214,7 @@ xq_allowProvisioningUpdates=$xq_value
         echo ' ipa包导出失败 '
         echo '-------------'
         #结束脚本
-        exit 0
+        exit
     fi
-    echo '------------'
-    echo ' 打包ipa完成  '
-    echo '------------'
-
-    echo $ipaPath
 }
 

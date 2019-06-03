@@ -12,10 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XQEditMobileprovisionView : NSView
 
-@property (nonatomic, strong) NSTextField *mobileprovisionTF;
 @property (nonatomic, strong) NSTextField *mobileprovisionDescriptTF;
 
-@property (nonatomic, strong) NSButton *mobileprovisionBtn;
+@property (nonatomic, strong) NSTextField *mobileprovisionDevTF;
+@property (nonatomic, strong) NSButton *mobileprovisionDevBtn;
+
+@property (nonatomic, strong) NSTextField *mobileprovisionDisTF;
+@property (nonatomic, strong) NSButton *mobileprovisionDisBtn;
 
 @end
 

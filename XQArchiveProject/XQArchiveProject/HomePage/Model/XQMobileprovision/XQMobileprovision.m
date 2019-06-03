@@ -127,8 +127,8 @@
     
     NSString *startString = @"<?xml version";
     
-//    NSString *endString = @"</plist>";
-    NSString *endString = @"</Scheme>";
+    NSString *endString = @"</plist>";
+//    NSString *endString = @"</Scheme>";
     
     
     NSData *startData = [NSData dataWithBytes:[startString UTF8String] length:startString.length];

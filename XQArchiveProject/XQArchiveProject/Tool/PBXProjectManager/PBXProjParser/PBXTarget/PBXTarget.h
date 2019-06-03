@@ -16,9 +16,8 @@
 @class PBXTargetDependency;
 @class PBXBuildPhases;
 @class XCBuildConfiguration;
+
 NS_ASSUME_NONNULL_BEGIN
-
-
 
 /**
  app 类型
@@ -69,6 +68,32 @@ NS_ASSUME_NONNULL_BEGIN
  @param path shell路径，传nil则默认"/bin/sh".
  */
 - (void)addShellScriptBuildPhase:(NSString *)shellScript path:(NSString *)path;
+
+
+/**
+ wxq 获取 app target 下面的所有扩展 target
+
+ @return 扩展 target
+ */
+- (NSArray <PBXTarget *> *)xq_getExtensionTargets;
+
+/**
+ 获取 bundle id
+ */
+- (NSString *)xq_getbundleId;
+
+/**
+ 获取生产描述证书名称
+ */
+- (NSString *)xq_getDisProfileName;
+
+/**
+ 获取开发描述证书名称
+ */
+- (NSString *)xq_getDevProfileName;
+
+
+
 
 @end
 

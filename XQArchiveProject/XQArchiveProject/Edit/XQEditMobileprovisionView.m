@@ -18,24 +18,42 @@
         self.mobileprovisionDescriptTF = [NSTextField labelWithString:@""];
         [self addSubview:self.mobileprovisionDescriptTF];
         
-        self.mobileprovisionTF = [NSTextField new];
-        [self addSubview:self.mobileprovisionTF];
+        self.mobileprovisionDevTF = [NSTextField new];
+        [self addSubview:self.mobileprovisionDevTF];
         
-        self.mobileprovisionBtn = [NSButton buttonWithTitle:@"选择描述文件" target:self action:@selector(respondsToSelectMobileprovision:)];
-        [self addSubview:self.mobileprovisionBtn];
+        self.mobileprovisionDevBtn = [NSButton buttonWithTitle:@"选择开发描述文件" target:self action:@selector(respondsToSelectDevMobileprovision:)];
+        [self addSubview:self.mobileprovisionDevBtn];
+        
+        self.mobileprovisionDisTF = [NSTextField new];
+        [self addSubview:self.mobileprovisionDisTF];
+        
+        self.mobileprovisionDisBtn = [NSButton buttonWithTitle:@"选择生产描述文件" target:self action:@selector(respondsToSelectDisMobileprovision:)];
+        [self addSubview:self.mobileprovisionDisBtn];
         
         [self.mobileprovisionDescriptTF mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.leading.trailing.equalTo(self);
+            make.top.leading.equalTo(self);
+            make.width.equalTo(self).multipliedBy(2.0/3);
         }];
         
-        [self.mobileprovisionTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.mobileprovisionDevTF mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mobileprovisionDescriptTF.mas_bottom).offset(10);
             make.leading.width.equalTo(self.mobileprovisionDescriptTF);
         }];
         
-        [self.mobileprovisionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.mobileprovisionTF);
-            make.trailing.equalTo(self);
+        [self.mobileprovisionDevBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.mobileprovisionDevTF);
+            make.left.equalTo(self.mobileprovisionDevTF.mas_right).offset(10);
+        }];
+        
+        [self.mobileprovisionDisTF mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.mobileprovisionDevTF.mas_bottom).offset(10);
+            make.leading.width.equalTo(self.mobileprovisionDescriptTF);
+            make.bottom.equalTo(self.mas_bottom);
+        }];
+        
+        [self.mobileprovisionDisBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.mobileprovisionDisTF);
+            make.left.equalTo(self.mobileprovisionDisTF.mas_right).offset(10);
         }];
         
         
@@ -45,7 +63,11 @@
 
 #pragma mark - responds
 
-- (void)respondsToSelectMobileprovision:(NSButton *)sender {
+- (void)respondsToSelectDevMobileprovision:(NSButton *)sender {
+    
+}
+
+- (void)respondsToSelectDisMobileprovision:(NSButton *)sender {
     
 }
 

@@ -10,18 +10,14 @@
 #import <XQProjectTool/XQOpenPanel.h>
 #import <XQProjectTool/XQAlertSystem.h>
 #import <XQProjectTool/XQXMLParser.h>
-
 #import <Masonry/Masonry.h>
 
 #import "XQEditView.h"
-
 #import "XQArchiveProjectModel.h"
-
 #import "XQXMLParser.h"
-
 #import "PBXProjectManager.h"
-
-#import "XQMobileprovision.h"
+#import "XQSchemeModel.h"
+#import "XQEditVCProfileModel.h"
 
 @interface XQEditVC () <XQEditViewDelegate>
 
@@ -33,15 +29,16 @@
  */
 @property (nonatomic, strong) NSMutableArray <PBXTarget *> *appTargetsArr;
 
+/** <#note#> */
+@property (nonatomic, copy) NSArray <XQSchemeModel *> *schemeArr;
+
 /**
  当前 app tagets
  */
 @property (nonatomic, strong) PBXTarget *cAppTargets;
 
-/**
- 描述文件
- */
-@property (nonatomic, strong) XQMobileprovision *mobileprovision;
+/** <#note#> */
+@property (nonatomic, strong) XQSchemeModel *cSchemeModel;
 
 @end
 
@@ -89,13 +86,7 @@
     
     self.editView.delegate = self;
     
-//    NSData *data = [NSData dataWithContentsOfFile:@"/Users/wangxingqian/Desktop/Blog/XQScriptArchive/XQArchiveDemo/XQArchiveDemo.xcodeproj/xcshareddata/xcschemes/XQArchiveDemo.xcscheme"];
-    
-//    NSData *data = [NSData dataWithContentsOfFile:@"/Users/wangxingqian/Desktop/Blog/XQScriptArchive/XQArchiveDemo/XQArchiveDemo.xcodeproj/xcshareddata/xcschemes/XQArchiveDemo.xcscheme"];
-    NSData *data = [NSData dataWithContentsOfFile:@"/Users/wangxingqian/Desktop/Blog/XQScriptArchive/XQArchiveProject/XQArchiveProject/Info.plist"];
-    
-    
-    NSLog(@"%@", [XQXMLParser jsonStringForXMLData:data error:nil]);
+    [self updateData];
 }
 
 - (void)initUI {
@@ -126,13 +117,11 @@
     
     NSMutableArray *muArr = [NSMutableArray array];
     for (NSString *key in self.archiveModel.devPlistModel.provisioningProfiles.allKeys) {
-        NSString *value = self.archiveModel.devPlistModel.provisioningProfiles[key];
-        XQMobileprovisionModel *model = [XQMobileprovisionModel new];
-        model.Name = value;
-        
-        model.Entitlements = [XQEntitlementsModel new];
-        model.Entitlements.applicationIdentifier = key;
-        [muArr addObject:model];
+        XQEditVCProfileModel *pModel = [XQEditVCProfileModel new];
+        pModel.bundleId = key;
+        pModel.dev = self.archiveModel.devPlistModel.provisioningProfiles[key];
+        pModel.dis = self.archiveModel.disPlistModel.provisioningProfiles[key];
+        [muArr addObject:pModel];
     }
     
     self.editView.mobileprovisionModelArr = muArr;
@@ -140,130 +129,147 @@
 
 
 - (void)updateData {
-    [self refreshTarget];
-    [self refreshMobileprovision];
-}
-
-- (void)refreshTarget {
-    [self.appTargetsArr removeAllObjects];
+    if (self.editView.xcodeprojPathTF.stringValue.length == 0) {
+        return;
+    }
     
     NSFileManager *f = [NSFileManager defaultManager];
+    
+    /*
+     先获取项目的 scheme, 反正没有 shceme 就算给出 target 也无法打包
+     直接用XCode却可以, 真的坑.
+     */
+    
+    NSError *error = nil;
+    NSString *schemePath = [self.editView.xcodeprojPathTF.stringValue stringByAppendingPathComponent:@"xcshareddata/xcschemes"];
+    NSArray *arr = [f contentsOfDirectoryAtPath:schemePath error:&error];
+    
+    if (error) {
+        [XQAlertSystem alertErrorWithWithWindow:self.view.window error:error callback:nil];
+        return;
+    }
+    
+    NSMutableArray <XQSchemeModel *> *schemeArr = [NSMutableArray array];
+    for (NSString *name in arr) {
+        XQSchemeModel *sModel = [XQSchemeModel schemeModelWithFilePath:[schemePath stringByAppendingPathComponent:name]];
+        if (!sModel) {
+            continue;
+        }
+        
+        [schemeArr addObject:sModel];
+    }
+    
+    self.schemeArr = schemeArr;
+    
     
     // 解析项目 .pbxproj
     NSString *pbxprojPath = [self.editView.xcodeprojPathTF.stringValue stringByAppendingPathComponent:@"project.pbxproj"];
     
     if ([f fileExistsAtPath:pbxprojPath]) {
         [[PBXProjParser sharedInstance] parseProjectWithPath:pbxprojPath];
+        self.appTargetsArr = [[PBXProjParser sharedInstance].project xq_getAppTargets].mutableCopy;
         
-        for (PBXTarget *target in [PBXProjParser sharedInstance].project.targets) {
-            NSLog(@"target: %@", target.rawData);
-            
-            /**
-             target.productType
-             com.apple.product-type.application: app
-             com.apple.product-type.app-extension: extension
-             */
-            NSString *productType = target.rawData[@"productType"];
-            
-            // 是app
-            if ([productType isEqualToString:XQ_ProductType_Application]) {
-                
-                [self.appTargetsArr addObject:target];
-                
-                
-                for (PBXBuildPhases *buildPhases in target.buildPhases) {
-                    
-                    /**
-                     根据 isa 执行来判断
-                     
-                     PBXShellScriptBuildPhase: 脚本
-                     PBXSourcesBuildPhase: 源码资源
-                     PBXFrameworksBuildPhase: framework
-                     PBXResourcesBuildPhase: 资源文件
-                     PBXCopyFilesBuildPhase: extension (系统默认 name: Embed App Extensions)
-                     */
-                    if ([[buildPhases getISA] isEqualToString:@"PBXCopyFilesBuildPhase"]) {
-                        // 获取到项目依赖的库, 从这里面筛选出来 Extension
-                        NSLog(@"buildPhases: %@", buildPhases.rawData);
-                        NSLog(@"files: %@", buildPhases.files);
-                        for (PBXBuildFile *file in buildPhases.files) {
-                            NSLog(@"file: %@", file.rawData);
-                            NSString *targetId = file.rawData[@"fileRef"];
-                            for (PBXTarget *target in [PBXProjParser sharedInstance].project.targets) {
-                                if ([target.rawData[@"productReference"] isEqualToString:targetId]) {
-                                    
-                                    // 再判断一下是否是扩展
-                                    if ([target.rawData[@"productType"] isEqualToString:@"com.apple.product-type.app-extension"]) {
-                                        NSLog(@"找到引用的 target 了: %@", target.rawData);
-                                    }
-                                    
-                                    break;
-                                }
-                            }
-                            
-                        }
-                    }
-                }
-                
-                // scheme name
-                NSString *name = [target getName];
-                self.editView.currentTargetTF.stringValue = name ? name : @"";
-                self.editView.projectNameTF.stringValue = name ? name : @"";
-                
-                // 这里可能拿到的是 Debug, 不过我感觉无所谓吧...
-                XCBuildConfiguration *bc = target.buildConfigurationList.buildConfigurations.firstObject;
-                if (bc) {
-                    NSLog(@"bc: %@", bc.rawData);
-                    
-                    // "PRODUCT_BUNDLE_IDENTIFIER" = "xxx";
-                    NSString *bundleId = [bc getBuildSetting:@"PRODUCT_BUNDLE_IDENTIFIER"];
-                    self.editView.bundleIdTF.stringValue = bundleId ? bundleId : @"";
-                    
-                    // "CODE_SIGN_STYLE" = Automatic; or Manual;
-                    NSString *codeSignStyle = [bc getBuildSetting:@"CODE_SIGN_STYLE"];
-                    self.archiveModel.devPlistModel.signingStyle = codeSignStyle;
-                    self.archiveModel.disPlistModel.signingStyle = codeSignStyle;
-                    
-                    // "DEVELOPMENT_TEAM" = xxx;
-                    NSString *team = [bc getBuildSetting:@"DEVELOPMENT_TEAM"];
-                    self.editView.teamIdTF.stringValue = team ? team : @"";
-                    
-                    // "INFOPLIST_FILE" = "XQTestDemo/Info.plist";
-                    NSString *infoPlist = [bc getBuildSetting:@"INFOPLIST_FILE"];
-                    NSMutableArray *pathArr = [self.editView.xcodeprojPathTF.stringValue componentsSeparatedByString:@"/"].mutableCopy;
-                    [pathArr removeLastObject];
-                    [pathArr addObject:infoPlist];
-                    NSString *plistPath = [pathArr componentsJoinedByString:@"/"];
-                    self.editView.projectPlistpPathTF.stringValue = plistPath;
-                    
-                }
-                
-            }else if ([productType isEqualToString:XQ_ProductType_AppExtension]) {
-                // 扩展
-                
+        [self refreshTarget];
+    }else {
+        [XQAlertSystem alertErrorWithWithWindow:self.view.window domain:@"项目路径错误" code:10000 userInfo:nil callback:nil];
+    }
+}
+
+- (void)refreshTarget {
+    
+    if (self.schemeArr.count == 0) {
+        [XQAlertSystem alertErrorWithWithWindow:self.view.window domain:@"不存在Scheme, 先在利用XCode创建一下Scheme" code:10000 userInfo:nil callback:nil];
+        return;
+    }
+    
+    // scheme 操作
+    
+    if (self.archiveModel.configModel.schemeName) {
+        [self.editView.targetBtn removeAllItems];
+        [self.editView.targetBtn addItemWithTitle:@"切换Scheme"];
+        
+        for (PBXTarget *target in self.appTargetsArr) {
+            if ([[target getName] isEqualToString:self.archiveModel.configModel.schemeName]) {
+                self.cAppTargets = target;
+                // 当前自身, 不用再添加了
+                continue;
             }
-            
+            [self.editView.targetBtn addItemWithTitle:[target getName]];
+        }
+        
+        if (!self.cAppTargets) {
+            self.cAppTargets = self.appTargetsArr.firstObject;
         }
         
     }else {
-        NSLog(@"pbxproj no exist: %@", pbxprojPath);
+        self.cAppTargets = self.appTargetsArr.firstObject;
+        
     }
+    
+    [self refreshWithTarget:self.cAppTargets];
 }
 
-- (void)refreshMobileprovision {
-    // 获取 mobileprovision name
-    NSError *error = nil;
-    NSString *bundleId = self.editView.bundleIdTF.stringValue;
-    if (bundleId) {
-        // 解析 mobileprovision
-        XQMobileprovision *model = [XQMobileprovision getSystemMobileprovisionsCollectionWithBundleId:bundleId error:&error];
+- (void)refreshWithTarget:(PBXTarget *)target {
+    if (!target) {
+        return;
     }
+    
+    // scheme name
+    NSString *name = [target getName];
+    self.editView.currentTargetTF.stringValue = name ? name : @"";
+    self.editView.projectNameTF.stringValue = name ? name : @"";
+    
+    // 这里可能拿到的是 Debug, 不过这些数据无所谓, 一般开发和生产配置都一样的
+    XCBuildConfiguration *bc = target.buildConfigurationList.buildConfigurations.firstObject;
+    if (bc) {
+        
+        // "PRODUCT_BUNDLE_IDENTIFIER" = "xxx";
+        NSString *bundleId = [bc getBuildSetting:@"PRODUCT_BUNDLE_IDENTIFIER"];
+        self.editView.bundleIdTF.stringValue = bundleId ? bundleId : @"";
+        
+        // "CODE_SIGN_STYLE" = Automatic; or Manual;
+        NSString *codeSignStyle = [bc getBuildSetting:@"CODE_SIGN_STYLE"];
+        self.archiveModel.devPlistModel.signingStyle = codeSignStyle;
+        self.archiveModel.disPlistModel.signingStyle = codeSignStyle;
+        
+        // "DEVELOPMENT_TEAM" = xxx;
+        NSString *team = [bc getBuildSetting:@"DEVELOPMENT_TEAM"];
+        self.editView.teamIdTF.stringValue = team ? team : @"";
+        
+        // "INFOPLIST_FILE" = "XQTestDemo/Info.plist";
+        NSString *infoPlist = [bc getBuildSetting:@"INFOPLIST_FILE"];
+        NSMutableArray *pathArr = [self.editView.xcodeprojPathTF.stringValue componentsSeparatedByString:@"/"].mutableCopy;
+        [pathArr removeLastObject];
+        [pathArr addObject:infoPlist];
+        NSString *plistPath = [pathArr componentsJoinedByString:@"/"];
+        self.editView.projectPlistpPathTF.stringValue = plistPath;
+    }
+    
+    
+    NSMutableArray *profileMuArr = [NSMutableArray array];
+    // 自身的描述
+    XQEditVCProfileModel *pModel = [XQEditVCProfileModel new];
+    pModel.bundleId = [target xq_getbundleId];
+    pModel.dev = [target xq_getDevProfileName];
+    pModel.dis = [target xq_getDisProfileName];
+    
+    [profileMuArr addObject:pModel];
+    
+    NSArray *arr = [target xq_getExtensionTargets];
+    for (PBXTarget *eTarget in arr) {
+        // 自身的描述
+        XQEditVCProfileModel *pModel = [XQEditVCProfileModel new];
+        pModel.bundleId = [eTarget xq_getbundleId];
+        pModel.dev = [eTarget xq_getDevProfileName];
+        pModel.dis = [eTarget xq_getDisProfileName];
+        
+        [profileMuArr addObject:pModel];
+    }
+    
+    self.editView.mobileprovisionModelArr = profileMuArr;
 }
 
-
-#pragma mark - responds
-
-- (IBAction)respondsToDone:(id)sender {
+- (void)saveConfig {
     self.archiveModel.configModel.xq_name = self.editView.projectNameTF.stringValue;
     self.archiveModel.configModel.bundleId = self.editView.bundleIdTF.stringValue;
     self.archiveModel.configModel.schemeName = self.editView.currentTargetTF.stringValue;
@@ -287,6 +293,28 @@
     self.archiveModel.configModel.buglyAppKey = self.editView.buglyAppKeyTF.stringValue;
     self.archiveModel.configModel.buglyAppVersion = self.editView.buglyAppVersionTF.stringValue;
     self.archiveModel.configModel.buglyUploadDSYM = self.editView.buglyUpDSYMBtn.state == NSControlStateValueOn ? XQ_Archive_on : XQ_Archive_off;
+    
+    self.archiveModel.disPlistModel.teamID = self.editView.teamIdTF.stringValue;
+    
+    NSMutableDictionary *devDic = [NSMutableDictionary dictionary];
+    NSMutableDictionary *disDic = [NSMutableDictionary dictionary];
+    for (XQEditMobileprovisionView *pView in self.editView.mobileprovisionArrView) {
+        if (!pView.mobileprovisionDescriptTF.stringValue) {
+            continue;
+        }
+        
+        if (pView.mobileprovisionDevTF.stringValue) {
+            [devDic addEntriesFromDictionary:@{pView.mobileprovisionDescriptTF.stringValue:pView.mobileprovisionDevTF.stringValue}];
+        }
+        
+        if (pView.mobileprovisionDisTF.stringValue) {
+            [disDic addEntriesFromDictionary:@{pView.mobileprovisionDescriptTF.stringValue:pView.mobileprovisionDisTF.stringValue}];
+        }
+        
+    }
+    
+    self.archiveModel.devPlistModel.provisioningProfiles = devDic;
+    self.archiveModel.disPlistModel.provisioningProfiles = disDic;
     
     [self.archiveModel save];
     
@@ -330,6 +358,16 @@
     } cancelCallback:nil];
 }
 
+- (void)editView:(XQEditView *)editView didSelectSaveConfig:(NSButton *)sender {
+    [self saveConfig];
+}
+
+- (void)editView:(XQEditView *)editView didSelectChangeTarget:(NSPopUpButton *)sender {
+    self.editView.currentTargetTF.stringValue = sender.selectedItem.title ? sender.selectedItem.title : @"";
+    self.archiveModel.configModel.schemeName = sender.selectedItem.title;
+    [self refreshTarget];
+}
+
 #pragma mark - get set
 
 - (NSMutableArray<PBXTarget *> *)appTargetsArr {
@@ -340,3 +378,14 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A407B35E22A4ABFE00BBF9A0 /* XQSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B35D22A4ABFE00BBF9A0 /* XQSchemeModel.m */; };
+		A407B36222A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B36122A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.m */; };
+		A407B36522A4AD0300BBF9A0 /* XQSchemeArchiveActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B36422A4AD0300BBF9A0 /* XQSchemeArchiveActionModel.m */; };
+		A407B36822A4AD1700BBF9A0 /* XQSchemeProfileActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B36722A4AD1700BBF9A0 /* XQSchemeProfileActionModel.m */; };
+		A407B36B22A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B36A22A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.m */; };
+		A407B36E22A4AD4300BBF9A0 /* XQSchemeTestActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B36D22A4AD4300BBF9A0 /* XQSchemeTestActionModel.m */; };
+		A407B37122A4AD6100BBF9A0 /* XQSchemeBuildActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B37022A4AD6100BBF9A0 /* XQSchemeBuildActionModel.m */; };
+		A407B37A22A4AF7800BBF9A0 /* XQSBuildableProductRunnable.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B37922A4AF7800BBF9A0 /* XQSBuildableProductRunnable.m */; };
+		A407B37D22A4AF8700BBF9A0 /* XQSBuildableReference.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B37C22A4AF8700BBF9A0 /* XQSBuildableReference.m */; };
+		A407B38022A4B09800BBF9A0 /* XQSchemeBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B37F22A4B09800BBF9A0 /* XQSchemeBaseModel.m */; };
+		A407B38322A4B1C900BBF9A0 /* XQSMacroExpansion.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B38222A4B1C900BBF9A0 /* XQSMacroExpansion.m */; };
+		A407B38622A4B30700BBF9A0 /* XQSBuildActionEntries.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B38522A4B30700BBF9A0 /* XQSBuildActionEntries.m */; };
+		A407B38922A4B31A00BBF9A0 /* XQSBuildActionEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B38822A4B31A00BBF9A0 /* XQSBuildActionEntry.m */; };
+		A407B38F22A4CEF900BBF9A0 /* XQEditVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B38E22A4CEF900BBF9A0 /* XQEditVCModel.m */; };
+		A407B3A922A4F18600BBF9A0 /* XQEditVCProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A407B3A822A4F18600BBF9A0 /* XQEditVCProfileModel.m */; };
 		A487B9B6229BB0860013686F /* XQArchiveConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A487B9B5229BB0860013686F /* XQArchiveConfigModel.m */; };
 		A487B9BA229BBA240013686F /* XQHomePageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A487B9B8229BBA240013686F /* XQHomePageItem.m */; };
 		A487B9BB229BBA240013686F /* XQHomePageItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A487B9B9229BBA240013686F /* XQHomePageItem.xib */; };
@@ -72,6 +87,36 @@
 
 /* Begin PBXFileReference section */
 		3A5C957ABF6B3F1D01513534 /* Pods_XQArchiveProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XQArchiveProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A407B35C22A4ABFE00BBF9A0 /* XQSchemeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeModel.h; sourceTree = "<group>"; };
+		A407B35D22A4ABFE00BBF9A0 /* XQSchemeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeModel.m; sourceTree = "<group>"; };
+		A407B36022A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeAnalyzeActionModel.h; sourceTree = "<group>"; };
+		A407B36122A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeAnalyzeActionModel.m; sourceTree = "<group>"; };
+		A407B36322A4AD0200BBF9A0 /* XQSchemeArchiveActionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeArchiveActionModel.h; sourceTree = "<group>"; };
+		A407B36422A4AD0300BBF9A0 /* XQSchemeArchiveActionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeArchiveActionModel.m; sourceTree = "<group>"; };
+		A407B36622A4AD1700BBF9A0 /* XQSchemeProfileActionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeProfileActionModel.h; sourceTree = "<group>"; };
+		A407B36722A4AD1700BBF9A0 /* XQSchemeProfileActionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeProfileActionModel.m; sourceTree = "<group>"; };
+		A407B36922A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeLaunchActionModel.h; sourceTree = "<group>"; };
+		A407B36A22A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeLaunchActionModel.m; sourceTree = "<group>"; };
+		A407B36C22A4AD4300BBF9A0 /* XQSchemeTestActionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeTestActionModel.h; sourceTree = "<group>"; };
+		A407B36D22A4AD4300BBF9A0 /* XQSchemeTestActionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeTestActionModel.m; sourceTree = "<group>"; };
+		A407B36F22A4AD6100BBF9A0 /* XQSchemeBuildActionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeBuildActionModel.h; sourceTree = "<group>"; };
+		A407B37022A4AD6100BBF9A0 /* XQSchemeBuildActionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeBuildActionModel.m; sourceTree = "<group>"; };
+		A407B37822A4AF7800BBF9A0 /* XQSBuildableProductRunnable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSBuildableProductRunnable.h; sourceTree = "<group>"; };
+		A407B37922A4AF7800BBF9A0 /* XQSBuildableProductRunnable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSBuildableProductRunnable.m; sourceTree = "<group>"; };
+		A407B37B22A4AF8700BBF9A0 /* XQSBuildableReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSBuildableReference.h; sourceTree = "<group>"; };
+		A407B37C22A4AF8700BBF9A0 /* XQSBuildableReference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSBuildableReference.m; sourceTree = "<group>"; };
+		A407B37E22A4B09800BBF9A0 /* XQSchemeBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSchemeBaseModel.h; sourceTree = "<group>"; };
+		A407B37F22A4B09800BBF9A0 /* XQSchemeBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSchemeBaseModel.m; sourceTree = "<group>"; };
+		A407B38122A4B1C900BBF9A0 /* XQSMacroExpansion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSMacroExpansion.h; sourceTree = "<group>"; };
+		A407B38222A4B1C900BBF9A0 /* XQSMacroExpansion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSMacroExpansion.m; sourceTree = "<group>"; };
+		A407B38422A4B30700BBF9A0 /* XQSBuildActionEntries.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSBuildActionEntries.h; sourceTree = "<group>"; };
+		A407B38522A4B30700BBF9A0 /* XQSBuildActionEntries.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSBuildActionEntries.m; sourceTree = "<group>"; };
+		A407B38722A4B31A00BBF9A0 /* XQSBuildActionEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQSBuildActionEntry.h; sourceTree = "<group>"; };
+		A407B38822A4B31A00BBF9A0 /* XQSBuildActionEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQSBuildActionEntry.m; sourceTree = "<group>"; };
+		A407B38D22A4CEF900BBF9A0 /* XQEditVCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQEditVCModel.h; sourceTree = "<group>"; };
+		A407B38E22A4CEF900BBF9A0 /* XQEditVCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditVCModel.m; sourceTree = "<group>"; };
+		A407B3A722A4F18600BBF9A0 /* XQEditVCProfileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQEditVCProfileModel.h; sourceTree = "<group>"; };
+		A407B3A822A4F18600BBF9A0 /* XQEditVCProfileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditVCProfileModel.m; sourceTree = "<group>"; };
 		A487B9B4229BB0860013686F /* XQArchiveConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQArchiveConfigModel.h; sourceTree = "<group>"; };
 		A487B9B5229BB0860013686F /* XQArchiveConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQArchiveConfigModel.m; sourceTree = "<group>"; };
 		A487B9B7229BBA240013686F /* XQHomePageItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQHomePageItem.h; sourceTree = "<group>"; };
@@ -197,6 +242,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A407B35F22A4ACD500BBF9A0 /* XQSchemeModel */ = {
+			isa = PBXGroup;
+			children = (
+				A407B35C22A4ABFE00BBF9A0 /* XQSchemeModel.h */,
+				A407B35D22A4ABFE00BBF9A0 /* XQSchemeModel.m */,
+				A407B37222A4AD7300BBF9A0 /* AnalyzeAction */,
+				A407B37322A4AD7B00BBF9A0 /* ArchiveAction */,
+				A407B37422A4AD8300BBF9A0 /* ProfileAction */,
+				A407B37522A4AD8C00BBF9A0 /* LaunchAction */,
+				A407B37622A4AD9500BBF9A0 /* TestAction */,
+				A407B37722A4AD9E00BBF9A0 /* BuildAction */,
+				A407B37E22A4B09800BBF9A0 /* XQSchemeBaseModel.h */,
+				A407B37F22A4B09800BBF9A0 /* XQSchemeBaseModel.m */,
+			);
+			path = XQSchemeModel;
+			sourceTree = "<group>";
+		};
+		A407B37222A4AD7300BBF9A0 /* AnalyzeAction */ = {
+			isa = PBXGroup;
+			children = (
+				A407B36022A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.h */,
+				A407B36122A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.m */,
+			);
+			path = AnalyzeAction;
+			sourceTree = "<group>";
+		};
+		A407B37322A4AD7B00BBF9A0 /* ArchiveAction */ = {
+			isa = PBXGroup;
+			children = (
+				A407B36322A4AD0200BBF9A0 /* XQSchemeArchiveActionModel.h */,
+				A407B36422A4AD0300BBF9A0 /* XQSchemeArchiveActionModel.m */,
+			);
+			path = ArchiveAction;
+			sourceTree = "<group>";
+		};
+		A407B37422A4AD8300BBF9A0 /* ProfileAction */ = {
+			isa = PBXGroup;
+			children = (
+				A407B36622A4AD1700BBF9A0 /* XQSchemeProfileActionModel.h */,
+				A407B36722A4AD1700BBF9A0 /* XQSchemeProfileActionModel.m */,
+				A407B37822A4AF7800BBF9A0 /* XQSBuildableProductRunnable.h */,
+				A407B37922A4AF7800BBF9A0 /* XQSBuildableProductRunnable.m */,
+				A407B37B22A4AF8700BBF9A0 /* XQSBuildableReference.h */,
+				A407B37C22A4AF8700BBF9A0 /* XQSBuildableReference.m */,
+			);
+			path = ProfileAction;
+			sourceTree = "<group>";
+		};
+		A407B37522A4AD8C00BBF9A0 /* LaunchAction */ = {
+			isa = PBXGroup;
+			children = (
+				A407B36922A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.h */,
+				A407B36A22A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.m */,
+			);
+			path = LaunchAction;
+			sourceTree = "<group>";
+		};
+		A407B37622A4AD9500BBF9A0 /* TestAction */ = {
+			isa = PBXGroup;
+			children = (
+				A407B36C22A4AD4300BBF9A0 /* XQSchemeTestActionModel.h */,
+				A407B36D22A4AD4300BBF9A0 /* XQSchemeTestActionModel.m */,
+				A407B38122A4B1C900BBF9A0 /* XQSMacroExpansion.h */,
+				A407B38222A4B1C900BBF9A0 /* XQSMacroExpansion.m */,
+			);
+			path = TestAction;
+			sourceTree = "<group>";
+		};
+		A407B37722A4AD9E00BBF9A0 /* BuildAction */ = {
+			isa = PBXGroup;
+			children = (
+				A407B36F22A4AD6100BBF9A0 /* XQSchemeBuildActionModel.h */,
+				A407B37022A4AD6100BBF9A0 /* XQSchemeBuildActionModel.m */,
+				A407B38422A4B30700BBF9A0 /* XQSBuildActionEntries.h */,
+				A407B38522A4B30700BBF9A0 /* XQSBuildActionEntries.m */,
+				A407B38722A4B31A00BBF9A0 /* XQSBuildActionEntry.h */,
+				A407B38822A4B31A00BBF9A0 /* XQSBuildActionEntry.m */,
+			);
+			path = BuildAction;
+			sourceTree = "<group>";
+		};
 		A487B9B2229BB0310013686F /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +350,10 @@
 			children = (
 				A487B9BD229BC67F0013686F /* XQEditVC.h */,
 				A487B9BE229BC67F0013686F /* XQEditVC.m */,
+				A407B38D22A4CEF900BBF9A0 /* XQEditVCModel.h */,
+				A407B38E22A4CEF900BBF9A0 /* XQEditVCModel.m */,
+				A407B3A722A4F18600BBF9A0 /* XQEditVCProfileModel.h */,
+				A407B3A822A4F18600BBF9A0 /* XQEditVCProfileModel.m */,
 				A4D13514229FDC1800609D2E /* XQEditView.h */,
 				A4D13515229FDC1800609D2E /* XQEditView.m */,
 				A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */,
@@ -280,6 +410,7 @@
 				A4E8683D229E4C32008BBB73 /* XQArchiveProjectModel.h */,
 				A4E8683E229E4C32008BBB73 /* XQArchiveProjectModel.m */,
 				A4C6112E229D216A00754194 /* XQMobileprovision */,
+				A407B35F22A4ACD500BBF9A0 /* XQSchemeModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -638,6 +769,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A407B38322A4B1C900BBF9A0 /* XQSMacroExpansion.m in Sources */,
 				A4C61105229D093700754194 /* PBXBuildFile.m in Sources */,
 				A4C61106229D093700754194 /* PBXShellScriptBuildPhase.m in Sources */,
 				A4C61111229D093700754194 /* XCBuildConfiguration.m in Sources */,
@@ -646,7 +778,10 @@
 				A4C6111F229D171E00754194 /* ProfilesNode.m in Sources */,
 				A487B9BA229BBA240013686F /* XQHomePageItem.m in Sources */,
 				A487B9B6229BB0860013686F /* XQArchiveConfigModel.m in Sources */,
+				A407B38022A4B09800BBF9A0 /* XQSchemeBaseModel.m in Sources */,
 				A4C61112229D093700754194 /* XCConfigurationList.m in Sources */,
+				A407B36822A4AD1700BBF9A0 /* XQSchemeProfileActionModel.m in Sources */,
+				A407B38622A4B30700BBF9A0 /* XQSBuildActionEntries.m in Sources */,
 				A4C61118229D093800754194 /* PBXContainerItemProxy.m in Sources */,
 				A4968C51228E8610004ED08A /* ViewController.m in Sources */,
 				A4C61134229D21E700754194 /* XQMobileprovisionModel.m in Sources */,
@@ -662,21 +797,31 @@
 				A4C61119229D093800754194 /* NSDictionary+PBXProjectFormat.m in Sources */,
 				A4C61126229D176100754194 /* DateManager.m in Sources */,
 				A4E8683F229E4C32008BBB73 /* XQArchiveProjectModel.m in Sources */,
+				A407B38922A4B31A00BBF9A0 /* XQSBuildActionEntry.m in Sources */,
 				A487B9C5229BC71C0013686F /* XQHomePageAddItem.m in Sources */,
+				A407B37A22A4AF7800BBF9A0 /* XQSBuildableProductRunnable.m in Sources */,
 				A4E86842229E4DD6008BBB73 /* XQArchiveModel.m in Sources */,
 				A4C61131229D217500754194 /* XQMobileprovision.m in Sources */,
 				A4C6110C229D093700754194 /* PBXProject.m in Sources */,
 				A4C6110A229D093700754194 /* PBXResourcesBuildPhase.m in Sources */,
 				A4C61103229D093700754194 /* PBXObjects.m in Sources */,
+				A407B37122A4AD6100BBF9A0 /* XQSchemeBuildActionModel.m in Sources */,
 				A4C6110D229D093700754194 /* PBXTarget.m in Sources */,
 				A4C61116229D093700754194 /* PBXFileReference.m in Sources */,
 				A4C61113229D093700754194 /* PBXGroup.m in Sources */,
 				A4C61108229D093700754194 /* PBXSourcesBuildPhase.m in Sources */,
 				A4C61109229D093700754194 /* PBXFrameworksBuildPhase.m in Sources */,
+				A407B37D22A4AF8700BBF9A0 /* XQSBuildableReference.m in Sources */,
+				A407B3A922A4F18600BBF9A0 /* XQEditVCProfileModel.m in Sources */,
+				A407B36522A4AD0300BBF9A0 /* XQSchemeArchiveActionModel.m in Sources */,
+				A407B36E22A4AD4300BBF9A0 /* XQSchemeTestActionModel.m in Sources */,
 				A4E7DA2E22A0D16100A76788 /* NSViewController+XQLoadView.m in Sources */,
 				A4C6111A229D093800754194 /* PBXCompare.m in Sources */,
 				A4C6110F229D093700754194 /* PBXAggregateTarget.m in Sources */,
+				A407B35E22A4ABFE00BBF9A0 /* XQSchemeModel.m in Sources */,
 				A4C6110E229D093700754194 /* PBXNativeTarget.m in Sources */,
+				A407B36222A4ACEB00BBF9A0 /* XQSchemeAnalyzeActionModel.m in Sources */,
+				A407B36B22A4AD2B00BBF9A0 /* XQSchemeLaunchActionModel.m in Sources */,
 				A4C61104229D093700754194 /* PBXObject.m in Sources */,
 				A4C61117229D093800754194 /* PBXProjectConst.m in Sources */,
 				A4968C4E228E8610004ED08A /* AppDelegate.m in Sources */,
@@ -684,6 +829,7 @@
 				A4D13519229FDEAA00609D2E /* XQEditMobileprovisionView.m in Sources */,
 				A4C61114229D093700754194 /* PBXVariantGroup.m in Sources */,
 				A487B9C0229BC67F0013686F /* XQEditVC.m in Sources */,
+				A407B38F22A4CEF900BBF9A0 /* XQEditVCModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

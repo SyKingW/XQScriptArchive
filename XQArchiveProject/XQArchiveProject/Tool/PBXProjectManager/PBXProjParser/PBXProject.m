@@ -20,6 +20,8 @@
 
 #import "PBXProjParser.h"
 
+#import "XCBuildConfiguration.h"
+
 @interface PBXProject ()
 
 @end
@@ -83,6 +85,46 @@
         }
     }
     return nil;
+}
+
+
+// wxq
+- (NSArray <PBXTarget *> *)xq_getAppTargets {
+    NSMutableArray *muArr = [NSMutableArray array];
+    
+    for (PBXTarget *target in [PBXProjParser sharedInstance].project.targets) {
+        /**
+         target.productType
+         com.apple.product-type.application: app
+         com.apple.product-type.app-extension: extension
+         */
+        NSString *productType = target.rawData[@"productType"];
+        // 是app
+        if ([productType isEqualToString:XQ_ProductType_Application]) {
+            [muArr addObject:target];
+        }
+    }
+    
+    return muArr;
+}
+
+// wxq
+- (PBXTarget *)xq_getAppTargetWithBundleId:(NSString *)bundleId {
+    if (!bundleId) {
+        return nil;
+    }
+    PBXTarget *resultTarget = nil;
+    for (PBXTarget *target in [PBXProjParser sharedInstance].project.targets) {
+        XCBuildConfiguration *bc = target.buildConfigurationList.buildConfigurations.firstObject;
+        if (bc) {
+            NSString *bundleId = [bc getBuildSetting:@"PRODUCT_BUNDLE_IDENTIFIER"];
+            if ([bundleId isEqualToString:bundleId]) {
+                resultTarget = target;
+                break;
+            }
+        }
+    }
+    return resultTarget;
 }
 
 @end

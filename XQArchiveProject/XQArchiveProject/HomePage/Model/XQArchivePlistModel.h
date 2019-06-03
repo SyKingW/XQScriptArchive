@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  @note 格式如下
  { "bundleId": ".mobileprovision 文件的 Name" }
  
- 自动签名 这个可没有
+ 自动签名, 不需要这个
  */
 @property (nonatomic, copy) NSDictionary *provisioningProfiles;
 
