@@ -11,83 +11,105 @@
 #import <XQProjectTool/XQCommonHeader.h>
 #import <XQProjectTool/XQAlertSystem.h>
 
+#import "XQProjectVC.h"
+#import "XQDoneTaskVC.h"
+#import "XQTaskVC.h"
+
 #import "XQTestVC.h"
 
 #import "XQArchiveProjectModel.h"
 
-#import "XQHomePageItem.h"
-#import "XQHomePageAddItem.h"
-
-
 #import "XQTestScrollViewVC.h"
 
-#define XQ_VC_ADD @"add"
+#import "XQUserNotification.h"
 
+@interface ViewController ()
 
-@interface ViewController () <NSCollectionViewDelegate, NSCollectionViewDataSource>
+@property (weak) IBOutlet NSButton *projectBtn;
+@property (weak) IBOutlet NSButton *taskingBtn;
+@property (weak) IBOutlet NSButton *doneTaskBtn;
 
-@property (weak) IBOutlet NSCollectionView *collectionView;
-
-@property (weak) IBOutlet NSCollectionViewFlowLayout *flowLayout;
+@property (weak) IBOutlet NSView *contentView;
 
 /** <#note#> */
-@property (nonatomic, strong) NSMutableArray <XQArchiveProjectModel *> *dataArr;
+@property (nonatomic, strong) XQProjectVC *pVC;
+/** <#note#> */
+@property (nonatomic, strong) XQTaskVC *tVC;
+/** <#note#> */
+@property (nonatomic, strong) XQDoneTaskVC *dVC;
+
+/** <#note#> */
+@property (nonatomic, assign) NSUInteger index;
 
 @end
 
 @implementation ViewController
 
-#pragma mark - Cycle life
+#pragma mark - life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.pVC = [[XQProjectVC alloc] initWithNibName:@"XQProjectVC" bundle:nil];
+    self.tVC = [[XQTaskVC alloc] initWithNibName:@"XQTaskVC" bundle:nil];
+    self.dVC = [[XQDoneTaskVC alloc] initWithNibName:@"XQDoneTaskVC" bundle:nil];
     
-    [self.collectionView registerNib:[[NSNib alloc] initWithNibNamed:XQ_XQHomePageItem_Item bundle:nil] forItemWithIdentifier:XQ_XQHomePageItem_Item];
-    [self.collectionView registerNib:[[NSNib alloc] initWithNibNamed:XQ_XQHomePageAddItem_item bundle:nil] forItemWithIdentifier:XQ_XQHomePageAddItem_item];
+    [self addChildViewController:self.pVC];
+    [self addChildViewController:self.tVC];
+    [self addChildViewController:self.dVC];
     
-    
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
-    
-    [self getData];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification_changeInfo:) name:Notification_XQArchiveConfigModel_ChangeInfo object:nil];
-}
-
-- (void)viewWillAppear {
-    [super viewWillAppear];
-    NSLog(@"%s", __func__);
+    self.index = 100;
+    [self changeProjectView];
 }
 
 #pragma mark - Other Method
 
-- (void)getData {
-    NSError *error = nil;
-    self.dataArr = [XQArchiveProjectModel getLocalDataArrWithError:&error].mutableCopy;
-    if (error) {
-        [XQAlertSystem alertErrorWithWithWindow:self.view.window error:error callback:nil];
+- (void)xq_removeSubViews {
+    NSArray *arr = self.contentView.subviews.copy;
+    for (NSView *view in arr) {
+        [view removeFromSuperview];
     }
-    
-    // 添加
-    XQArchiveProjectModel *model = [XQArchiveProjectModel new];
-    model.xq_id = XQ_VC_ADD;
-    [self.dataArr addObject:model];
-    
-    [self.collectionView reloadData];
 }
 
-- (void)addProject {
-    NSError *error = nil;
-    XQArchiveProjectModel *model = [XQArchiveProjectModel createProjectWithError:&error];
-    if (error) {
-        [XQAlertSystem alertErrorWithWithWindow:self.view.window error:error callback:nil];
+- (void)changeProjectView {
+    if (self.index == 0) {
         return;
     }
     
-    [self.dataArr insertObject:model atIndex:0];
+    self.index = 0;
     
-    NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:0 inSection:0]];
-    [self.collectionView insertItemsAtIndexPaths:set];
+    [self xq_removeSubViews];
+    [self.contentView addSubview:self.pVC.view];
+    [self.pVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
+    }];
+}
+
+- (void)changeTaskView {
+    if (self.index == 1) {
+        return;
+    }
+    
+    self.index = 1;
+    
+    [self xq_removeSubViews];
+    [self.contentView addSubview:self.tVC.view];
+    [self.tVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
+    }];
+}
+
+- (void)changeDoneTaskView {
+    if (self.index == 2) {
+        return;
+    }
+    
+    self.index = 2;
+    
+    [self xq_removeSubViews];
+    [self.contentView addSubview:self.dVC.view];
+    [self.dVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
+    }];
 }
 
 #pragma mark - responds
@@ -98,90 +120,43 @@
     [self presentViewControllerAsModalWindow:vc];
 }
 
-#pragma mark - Notification
-
-- (void)notification_changeInfo:(NSNotification *)sender {
-    [self getData];
+- (IBAction)respondsToProject:(NSButton *)sender {
+    [self changeProjectView];
 }
 
-#pragma mark - NSCollectionViewDataSource
-
-// 分区
-- (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView {
-    NSLog(@"%s", __func__);
-    return 1;
-}
-
-- (NSInteger)collectionView:(NSCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"%s", __func__);
-    return self.dataArr.count;
-}
-
-- (NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%s", __func__);
+- (IBAction)respondsToExecutingTask:(NSButton *)sender {
+    [self changeTaskView];
     
-    XQArchiveProjectModel *model = self.dataArr[indexPath.item];
-    XQ_WS(weakSelf);
-    
-    if ([model.xq_id isEqualToString:XQ_VC_ADD]) {
-        XQHomePageAddItem *item = [collectionView makeItemWithIdentifier:XQ_XQHomePageAddItem_item forIndexPath:indexPath];
-        item.callback = ^{
-            [weakSelf addProject];
-        };
-        return item;
-    }
-    
-    XQHomePageItem *item = [collectionView makeItemWithIdentifier:XQ_XQHomePageItem_Item forIndexPath:indexPath];
-    item.archiveModel = model;
-    
-    item.callback = ^(XQHomePageItem *item, XQHomePageItemTap tapType) {
-        switch (tapType) {
-            case XQHomePageItemTapBuild: {
-                [item.archiveModel build];
-            }
-                break;
-                
-            case XQHomePageItemTapBuildXcarchive: {
-                [item.archiveModel terminate];
-            }
-                break;
-                
-            case XQHomePageItemTapIpa: {
-                
-            }
-                break;
-                
-            case XQHomePageItemTapDYSM: {
-                
-            }
-                break;
-                
-            case XQHomePageItemTapDelete:{
-                if ([item.archiveModel deleteModel]) {
-                    [weakSelf.dataArr removeObject:item.archiveModel];
-                    [weakSelf.collectionView reloadData];
-                }else {
-                    [XQAlertSystem alertErrorWithWithWindow:self.view.window domain:@"删除失败" code:100 userInfo:nil callback:nil];
-                }
-                
-            }
-                break;
-                
-            default:
-                break;
+    return;
+    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+    content.title = @"title";
+    content.subtitle = @"subtitle";
+    content.body = @"body";
+    NSString *iden = [NSString stringWithFormat:@"%f", [NSDate date].timeIntervalSince1970];
+    [XQUserNotification addTimeIntervalNotificationWithIdentifier:iden timeInterval:1 content:content repeats:NO withCompletionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error: %@", error);
+        }else {
+            NSLog(@"添加成功");
         }
-    };
+    }];
     
-    return item;
+    
+    // 获取未触发的通知
+    [[UNUserNotificationCenter currentNotificationCenter] getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
+        NSLog(@"%@", requests);
+    }];
+    
+    // 获取已显示, 但用户还没点的通知
+    [[UNUserNotificationCenter currentNotificationCenter] getDeliveredNotificationsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
+        NSLog(@"%@", requests);
+    }];
+    
+    
 }
 
-#pragma mark - get
-
-- (NSMutableArray<XQArchiveProjectModel *> *)dataArr {
-    if (!_dataArr) {
-        _dataArr = [NSMutableArray array];
-    }
-    return _dataArr;
+- (IBAction)respondsToDoneTask:(NSButton *)sender {
+    [self changeDoneTaskView];
 }
 
 @end

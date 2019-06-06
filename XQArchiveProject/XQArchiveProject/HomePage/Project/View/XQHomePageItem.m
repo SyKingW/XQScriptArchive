@@ -51,6 +51,12 @@
     }
 }
 
+- (IBAction)respondsToBuildDebug:(NSButton *)sender {
+    if (self.callback) {
+        self.callback(self, XQHomePageItemTapBuildDebug);
+    }
+}
+
 - (IBAction)respondsToBuildXcarchive:(NSButton *)sender {
     if (self.callback) {
         self.callback(self, XQHomePageItemTapBuildXcarchive);

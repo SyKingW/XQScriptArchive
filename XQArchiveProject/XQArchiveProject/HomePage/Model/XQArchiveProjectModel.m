@@ -17,19 +17,19 @@
     [self.disPlistModel save];
 }
 
-- (void)buildRelease {
-    [self buildWithRelease:YES];
+- (void)buildReleaseWithError:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler {
+    [self buildWithRelease:YES error:error outLogHandle:outLogHandle errorLogHandle:errorLogHandle terminationHandler:terminationHandler];
 }
 
-- (void)buildDebug {
-    [self buildWithRelease:NO];
+- (void)buildDebugWithError:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler {
+    [self buildWithRelease:NO error:error outLogHandle:outLogHandle errorLogHandle:errorLogHandle terminationHandler:terminationHandler];
 }
 
-- (void)build {
-    [self buildWithRelease:[self.configModel.archiveMode isEqualToString:XQ_Archive_Release]];
+- (void)buildWithError:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler {
+    [self buildWithRelease:[self.configModel.archiveMode isEqualToString:XQ_Archive_Release] error:error outLogHandle:outLogHandle errorLogHandle:errorLogHandle terminationHandler:terminationHandler];
 }
 
-- (void)buildWithRelease:(BOOL)release {
+- (void)buildWithRelease:(BOOL)release error:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler {
     NSString *archivePath = [[NSBundle mainBundle] pathForResource:@"xq_archive" ofType:@"sh"];
     if (!archivePath) {
         NSLog(@"找不到脚本");
@@ -61,12 +61,12 @@
     }
     
     NSString *cmd = [NSString stringWithFormat:@"bash %@ %@ %@", archivePath, self.configModel.xq_path, plistPath];
-    [[XQTask manager] xq_executeSudoWithCmd:cmd];
+    [[XQTask manager] xq_executeSudoWithCmd:cmd key:self.configModel.bundleId error:error outLogHandle:outLogHandle errorLogHandle:errorLogHandle terminationHandler:terminationHandler];
     
 }
 
 - (void)terminate {
-    [[XQTask manager] xq_terminate];
+    [[XQTask manager] xq_terminateWithKey:self.configModel.bundleId];
 }
 
 + (NSArray <XQArchiveProjectModel *> *)getLocalDataArrWithError:(NSError **)error {

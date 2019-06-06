@@ -48,7 +48,7 @@
         [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.bottom.equalTo(self.scrollView.contentView);
             make.width.mas_greaterThanOrEqualTo(700);
-//            make.height.mas_greaterThanOrEqualTo(600);
+//            make.height.mas_greaterThanOrEqualTo(800);
             
             make.width.height.equalTo(self.scrollView.contentView).priorityLow();
         }];
@@ -173,17 +173,22 @@
     [self.teamIdTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.xcworkspacePathTF.mas_bottom).offset(10);
         make.leading.trailing.height.equalTo(self.projectNameTF);
-    }];
-    
-    self.releaseBtn = [NSButton checkboxWithTitle:@"Release (打包模式)" target:self action:@selector(respondsToRelease:)];
-    [self.baseInfoView addSubview:self.releaseBtn];
-    [self.releaseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.teamIdTF.mas_bottom).offset(10);
-        make.leading.equalTo(self.targetDescriptTF);
         
         // 最后一个, 跟父视图底部
         make.bottom.equalTo(self.baseInfoView.mas_bottom).offset(-10);
     }];
+    
+    
+    // 不应该在这里配置, 而是直接外面选Debug打包还是Release就行了
+//    self.releaseBtn = [NSButton checkboxWithTitle:@"Release (打包模式)" target:self action:@selector(respondsToRelease:)];
+//    [self.baseInfoView addSubview:self.releaseBtn];
+//    [self.releaseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.teamIdTF.mas_bottom).offset(10);
+//        make.leading.equalTo(self.targetDescriptTF);
+//
+//        // 最后一个, 跟父视图底部
+//        make.bottom.equalTo(self.baseInfoView.mas_bottom).offset(-10);
+//    }];
     
     
 }
@@ -197,6 +202,8 @@
     }];
     
     self.automaticBtn = [NSButton checkboxWithTitle:@"Automatic (签名模式) " target:self action:@selector(respondsToAutomatic:)];
+    // 不给用户改, 改就去项目改, 然后再次读一遍配置
+    self.automaticBtn.enabled = NO;
     [self refreshMobileprovisionView];
 }
 
@@ -418,8 +425,8 @@
             [self.mobileprovisionArrView addObject:emView];
             
             emView.mobileprovisionDescriptTF.stringValue = model.bundleId;
-            emView.mobileprovisionDevTF.stringValue = model.dev;
-            emView.mobileprovisionDisTF.stringValue = model.dis;
+            emView.mobileprovisionDevTF.stringValue = model.dev ? model.dev : @"";
+            emView.mobileprovisionDisTF.stringValue = model.dis ? model.dis : @"";
             
             // 获取上一个
             XQEditMobileprovisionView *oEMView = nil;

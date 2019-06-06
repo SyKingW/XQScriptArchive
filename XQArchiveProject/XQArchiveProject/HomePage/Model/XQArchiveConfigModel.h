@@ -77,6 +77,11 @@ NS_ASSUME_NONNULL_BEGIN
 /** 要上传 ipa 的路径 */
 @property (nonatomic, copy) NSString *ipaPath;
 
+/**
+ 有时候 ipa 的 name 会有人自定义, 不跟 scheme name 一样的
+ */
+@property (nonatomic, copy) NSString *customIpaName;
+
 /** 是否生成 dSYM
  0: 不生成
  1: 生成

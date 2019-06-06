@@ -15,6 +15,7 @@
 
 typedef NS_ENUM(NSUInteger, XQHomePageItemTap) {
     XQHomePageItemTapBuild = 0,
+    XQHomePageItemTapBuildDebug,
     XQHomePageItemTapBuildXcarchive,
     XQHomePageItemTapIpa,
     XQHomePageItemTapDYSM,

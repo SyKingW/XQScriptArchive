@@ -138,6 +138,7 @@ fi
 # $3 编译的mode debug还是release
 # $4 导出文件夹路径
 # $5 exportOptionsPlistPath 配置文件的plist
+# $6 .ipa 名称
 function createIpa() {
 
     xcarchive_path=$1
@@ -145,6 +146,7 @@ function createIpa() {
     development_mode=$3
     exportIpaFolderPath=$4
     exportOptionsPlistPath=$5
+    customArchiveName=$6
 
 #判断是否存在.plist
 if [ ! -f $exportOptionsPlistPath ]; then
@@ -165,6 +167,7 @@ xq_allowProvisioningUpdates=$xq_value
     echo "development_mode: $3"
     echo "exportIpaFolderPath: $4"
     echo "exportOptionsPlistPath: $5"
+    echo "customArchiveName: $6"
     echo "allowProvisioningUpdates: $xq_allowProvisioningUpdates"
 
     #导出.ipa文件所在路径
@@ -200,8 +203,7 @@ xq_allowProvisioningUpdates=$xq_value
 
 
     #ipa包路径
-    ipaPath="${exportIpaPath}/${scheme_name}.ipa"
-
+    ipaPath="${exportIpaPath}/${customArchiveName}.ipa"
     #判断包是否存在, 不存在则表示打包失败
     if [ -e "$ipaPath" ]; then
         echo '----------'
@@ -211,7 +213,7 @@ xq_allowProvisioningUpdates=$xq_value
     #open $exportIpaPath
     else
         echo '-------------'
-        echo ' ipa包导出失败 '
+        echo " ipa包导出失败: ${ipaPath} "
         echo '-------------'
         #结束脚本
         exit

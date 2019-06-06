@@ -36,8 +36,8 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KgN-oK-YwV">
-                    <rect key="frame" x="4" y="226" width="67" height="32"/>
-                    <buttonCell key="cell" type="push" title="构建" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3q1-cW-Cef">
+                    <rect key="frame" x="4" y="226" width="125" height="32"/>
+                    <buttonCell key="cell" type="push" title="构建(Release)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3q1-cW-Cef">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" usesAppearanceFont="YES"/>
                     </buttonCell>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JDN-se-wKI">
-                    <rect key="frame" x="79" y="226" width="168" height="32"/>
+                    <rect key="frame" x="4" y="195" width="168" height="32"/>
                     <buttonCell key="cell" type="push" title="构建 (已有.xcarchive)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I4c-hm-qFL">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" usesAppearanceFont="YES"/>
@@ -64,7 +64,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t8m-wS-FOK">
-                    <rect key="frame" x="8" y="191" width="31" height="17"/>
+                    <rect key="frame" x="8" y="165" width="31" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="上传" id="6on-zy-DiJ">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -72,7 +72,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvQ-rm-o8P">
-                    <rect key="frame" x="91" y="153" width="103" height="32"/>
+                    <rect key="frame" x="91" y="127" width="103" height="32"/>
                     <buttonCell key="cell" type="push" title="上传dSYM" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GbU-Vc-kyq">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" usesAppearanceFont="YES"/>
@@ -82,7 +82,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a1x-6I-HGH">
-                    <rect key="frame" x="4" y="153" width="89" height="32"/>
+                    <rect key="frame" x="4" y="127" width="89" height="32"/>
                     <buttonCell key="cell" type="push" title="上传.ipa" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I73-y2-s7D">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" usesAppearanceFont="YES"/>
@@ -101,17 +101,30 @@
                         <action selector="respondsToDel:" target="-2" id="qex-xR-bM0"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v25-Bq-woV">
+                    <rect key="frame" x="127" y="226" width="116" height="32"/>
+                    <buttonCell key="cell" type="push" title="构建(Debug)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vji-qq-lyd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" usesAppearanceFont="YES"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="respondsToBuildDebug:" target="-2" id="NVD-v8-0Fi"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="v25-Bq-woV" firstAttribute="centerY" secondItem="KgN-oK-YwV" secondAttribute="centerY" id="12T-6k-1Ea"/>
+                <constraint firstItem="t8m-wS-FOK" firstAttribute="top" secondItem="JDN-se-wKI" secondAttribute="bottom" constant="20" id="4nj-5f-UFq"/>
                 <constraint firstAttribute="trailing" secondItem="g9J-eK-AIe" secondAttribute="trailing" constant="10" id="GeJ-q1-mLC"/>
+                <constraint firstItem="JDN-se-wKI" firstAttribute="top" secondItem="KgN-oK-YwV" secondAttribute="bottom" constant="10" id="Gl6-ZC-468"/>
                 <constraint firstItem="eWF-j3-Bk0" firstAttribute="centerY" secondItem="g9J-eK-AIe" secondAttribute="centerY" id="Jnm-rn-isK"/>
-                <constraint firstItem="t8m-wS-FOK" firstAttribute="top" secondItem="KgN-oK-YwV" secondAttribute="bottom" constant="25" id="K73-gt-mR1"/>
+                <constraint firstItem="JDN-se-wKI" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="LXS-Cf-Jg9"/>
                 <constraint firstItem="dBV-cv-G4s" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="O8h-Kd-Ab8"/>
                 <constraint firstItem="KgN-oK-YwV" firstAttribute="top" secondItem="wa5-rq-C28" secondAttribute="bottom" constant="10" id="RBU-U7-IYk"/>
-                <constraint firstItem="JDN-se-wKI" firstAttribute="centerY" secondItem="KgN-oK-YwV" secondAttribute="centerY" id="Vhm-Ab-i5O"/>
                 <constraint firstItem="cvQ-rm-o8P" firstAttribute="centerY" secondItem="a1x-6I-HGH" secondAttribute="centerY" id="Wr8-bW-TbS"/>
                 <constraint firstItem="wa5-rq-C28" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="XjW-yL-DUG"/>
                 <constraint firstItem="cvQ-rm-o8P" firstAttribute="leading" secondItem="a1x-6I-HGH" secondAttribute="trailing" constant="10" id="ZvP-wG-j8D"/>
+                <constraint firstItem="v25-Bq-woV" firstAttribute="leading" secondItem="KgN-oK-YwV" secondAttribute="trailing" constant="10" id="bQZ-xo-h2A"/>
                 <constraint firstItem="wa5-rq-C28" firstAttribute="top" secondItem="dBV-cv-G4s" secondAttribute="bottom" constant="25" id="bpf-X1-dMd"/>
                 <constraint firstAttribute="bottom" secondItem="g9J-eK-AIe" secondAttribute="bottom" constant="10" id="chK-Mv-HPN"/>
                 <constraint firstItem="a1x-6I-HGH" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="ffj-1m-IgY"/>
@@ -119,7 +132,6 @@
                 <constraint firstItem="KgN-oK-YwV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="hQk-UT-Qyg"/>
                 <constraint firstItem="dBV-cv-G4s" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="heS-qq-TLD"/>
                 <constraint firstItem="t8m-wS-FOK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="jBD-uF-1LA"/>
-                <constraint firstItem="JDN-se-wKI" firstAttribute="leading" secondItem="KgN-oK-YwV" secondAttribute="trailing" constant="20" id="kOj-Y7-eSK"/>
                 <constraint firstItem="a1x-6I-HGH" firstAttribute="top" secondItem="t8m-wS-FOK" secondAttribute="bottom" constant="10" id="zgk-FD-oXz"/>
             </constraints>
             <point key="canvasLocation" x="98.5" y="419.5"/>

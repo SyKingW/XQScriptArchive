@@ -76,12 +76,19 @@
 		A4D1350D229FBC8100609D2E /* XQTestScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1350B229FBC8100609D2E /* XQTestScrollViewVC.xib */; };
 		A4D13516229FDC1800609D2E /* XQEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D13515229FDC1800609D2E /* XQEditView.m */; };
 		A4D13519229FDEAA00609D2E /* XQEditMobileprovisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D13518229FDEAA00609D2E /* XQEditMobileprovisionView.m */; };
+		A4DC0C1E22A663650079B44F /* XQTaskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DC0C1C22A663650079B44F /* XQTaskVC.m */; };
+		A4DC0C1F22A663650079B44F /* XQTaskVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DC0C1D22A663650079B44F /* XQTaskVC.xib */; };
+		A4DC0C2322A663720079B44F /* XQDoneTaskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DC0C2122A663720079B44F /* XQDoneTaskVC.m */; };
+		A4DC0C2422A663720079B44F /* XQDoneTaskVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DC0C2222A663720079B44F /* XQDoneTaskVC.xib */; };
+		A4DC0C2822A6638B0079B44F /* XQProjectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DC0C2622A6638B0079B44F /* XQProjectVC.m */; };
+		A4DC0C2922A6638B0079B44F /* XQProjectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DC0C2722A6638B0079B44F /* XQProjectVC.xib */; };
 		A4E7DA2E22A0D16100A76788 /* NSViewController+XQLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */; };
 		A4E7DA3022A0DB9900A76788 /* XQEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */; };
 		A4E7DA3422A0DC1300A76788 /* XQLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7DA3322A0DC1300A76788 /* XQLabel.m */; };
 		A4E86837229E2C24008BBB73 /* XQArchivePlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E86836229E2C24008BBB73 /* XQArchivePlistModel.m */; };
 		A4E8683F229E4C32008BBB73 /* XQArchiveProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E8683E229E4C32008BBB73 /* XQArchiveProjectModel.m */; };
 		A4E86842229E4DD6008BBB73 /* XQArchiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E86841229E4DD6008BBB73 /* XQArchiveModel.m */; };
+		A4EBFE3122A7511300F32DD1 /* XQUserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EBFE3022A7511300F32DD1 /* XQUserNotification.m */; };
 		D08AA9E563963EB56EDAC1C7 /* Pods_XQArchiveProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5C957ABF6B3F1D01513534 /* Pods_XQArchiveProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +222,15 @@
 		A4D13515229FDC1800609D2E /* XQEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditView.m; sourceTree = "<group>"; };
 		A4D13517229FDEAA00609D2E /* XQEditMobileprovisionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQEditMobileprovisionView.h; sourceTree = "<group>"; };
 		A4D13518229FDEAA00609D2E /* XQEditMobileprovisionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQEditMobileprovisionView.m; sourceTree = "<group>"; };
+		A4DC0C1B22A663650079B44F /* XQTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQTaskVC.h; sourceTree = "<group>"; };
+		A4DC0C1C22A663650079B44F /* XQTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQTaskVC.m; sourceTree = "<group>"; };
+		A4DC0C1D22A663650079B44F /* XQTaskVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQTaskVC.xib; sourceTree = "<group>"; };
+		A4DC0C2022A663720079B44F /* XQDoneTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQDoneTaskVC.h; sourceTree = "<group>"; };
+		A4DC0C2122A663720079B44F /* XQDoneTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQDoneTaskVC.m; sourceTree = "<group>"; };
+		A4DC0C2222A663720079B44F /* XQDoneTaskVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQDoneTaskVC.xib; sourceTree = "<group>"; };
+		A4DC0C2522A6638B0079B44F /* XQProjectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQProjectVC.h; sourceTree = "<group>"; };
+		A4DC0C2622A6638B0079B44F /* XQProjectVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQProjectVC.m; sourceTree = "<group>"; };
+		A4DC0C2722A6638B0079B44F /* XQProjectVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQProjectVC.xib; sourceTree = "<group>"; };
 		A4E7DA2C22A0D16100A76788 /* NSViewController+XQLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSViewController+XQLoadView.h"; sourceTree = "<group>"; };
 		A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSViewController+XQLoadView.m"; sourceTree = "<group>"; };
 		A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XQEditVC.xib; sourceTree = "<group>"; };
@@ -226,6 +242,8 @@
 		A4E8683E229E4C32008BBB73 /* XQArchiveProjectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQArchiveProjectModel.m; sourceTree = "<group>"; };
 		A4E86840229E4DD6008BBB73 /* XQArchiveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQArchiveModel.h; sourceTree = "<group>"; };
 		A4E86841229E4DD6008BBB73 /* XQArchiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQArchiveModel.m; sourceTree = "<group>"; };
+		A4EBFE2F22A7511300F32DD1 /* XQUserNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQUserNotification.h; sourceTree = "<group>"; };
+		A4EBFE3022A7511300F32DD1 /* XQUserNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQUserNotification.m; sourceTree = "<group>"; };
 		A7CCBE2F9B3E35C347F0330B /* Pods-XQArchiveProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XQArchiveProject.release.xcconfig"; path = "Target Support Files/Pods-XQArchiveProject/Pods-XQArchiveProject.release.xcconfig"; sourceTree = "<group>"; };
 		CBEDB81EE7C4FC051CE94F32 /* Pods-XQArchiveProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XQArchiveProject.debug.xcconfig"; path = "Target Support Files/Pods-XQArchiveProject/Pods-XQArchiveProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,8 +344,10 @@
 		A487B9B2229BB0310013686F /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				A4DC0C1A22A662290079B44F /* DoneTask */,
+				A4DC0C1922A6621A0079B44F /* Task */,
+				A4DC0C1822A662120079B44F /* Project */,
 				A487B9DD229BE7900013686F /* Ctl */,
-				A487B9DB229BE77F0013686F /* View */,
 				A487B9DC229BE78B0013686F /* Model */,
 			);
 			path = HomePage;
@@ -336,6 +356,7 @@
 		A487B9B3229BB0410013686F /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A4EBFE2E22A750F700F32DD1 /* UserNotification */,
 				A4E7DA3122A0DC0500A76788 /* XQLabel */,
 				A4C6111C229D170C00754194 /* ProfilesNode */,
 				A4C610CB229D093700754194 /* PBXProjectManager */,
@@ -350,13 +371,13 @@
 			children = (
 				A487B9BD229BC67F0013686F /* XQEditVC.h */,
 				A487B9BE229BC67F0013686F /* XQEditVC.m */,
+				A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */,
 				A407B38D22A4CEF900BBF9A0 /* XQEditVCModel.h */,
 				A407B38E22A4CEF900BBF9A0 /* XQEditVCModel.m */,
 				A407B3A722A4F18600BBF9A0 /* XQEditVCProfileModel.h */,
 				A407B3A822A4F18600BBF9A0 /* XQEditVCProfileModel.m */,
 				A4D13514229FDC1800609D2E /* XQEditView.h */,
 				A4D13515229FDC1800609D2E /* XQEditView.m */,
-				A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */,
 				A4D13517229FDEAA00609D2E /* XQEditMobileprovisionView.h */,
 				A4D13518229FDEAA00609D2E /* XQEditMobileprovisionView.m */,
 			);
@@ -604,6 +625,45 @@
 			path = XQMobileprovision;
 			sourceTree = "<group>";
 		};
+		A4DC0C1822A662120079B44F /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				A487B9DB229BE77F0013686F /* View */,
+				A4DC0C2A22A663930079B44F /* Ctl */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		A4DC0C1922A6621A0079B44F /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				A4DC0C1B22A663650079B44F /* XQTaskVC.h */,
+				A4DC0C1C22A663650079B44F /* XQTaskVC.m */,
+				A4DC0C1D22A663650079B44F /* XQTaskVC.xib */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		A4DC0C1A22A662290079B44F /* DoneTask */ = {
+			isa = PBXGroup;
+			children = (
+				A4DC0C2022A663720079B44F /* XQDoneTaskVC.h */,
+				A4DC0C2122A663720079B44F /* XQDoneTaskVC.m */,
+				A4DC0C2222A663720079B44F /* XQDoneTaskVC.xib */,
+			);
+			path = DoneTask;
+			sourceTree = "<group>";
+		};
+		A4DC0C2A22A663930079B44F /* Ctl */ = {
+			isa = PBXGroup;
+			children = (
+				A4DC0C2522A6638B0079B44F /* XQProjectVC.h */,
+				A4DC0C2622A6638B0079B44F /* XQProjectVC.m */,
+				A4DC0C2722A6638B0079B44F /* XQProjectVC.xib */,
+			);
+			path = Ctl;
+			sourceTree = "<group>";
+		};
 		A4E7DA3122A0DC0500A76788 /* XQLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +671,15 @@
 				A4E7DA3322A0DC1300A76788 /* XQLabel.m */,
 			);
 			path = XQLabel;
+			sourceTree = "<group>";
+		};
+		A4EBFE2E22A750F700F32DD1 /* UserNotification */ = {
+			isa = PBXGroup;
+			children = (
+				A4EBFE2F22A7511300F32DD1 /* XQUserNotification.h */,
+				A4EBFE3022A7511300F32DD1 /* XQUserNotification.m */,
+			);
+			path = UserNotification;
 			sourceTree = "<group>";
 		};
 		C23DE508D5B6DFA1BF61CA43 /* Frameworks */ = {
@@ -664,6 +733,9 @@
 					A4968C48228E8610004ED08A = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -701,13 +773,16 @@
 				A4D1350D229FBC8100609D2E /* XQTestScrollViewVC.xib in Resources */,
 				A487B9D6229BE0FF0013686F /* xq_shell.sh in Resources */,
 				A487B9D2229BE0FF0013686F /* xq_xcode.sh in Resources */,
+				A4DC0C2922A6638B0079B44F /* XQProjectVC.xib in Resources */,
 				A4968C53228E8611004ED08A /* Assets.xcassets in Resources */,
 				A487B9D9229BE0FF0013686F /* xq_bugly.sh in Resources */,
 				A487B9BB229BBA240013686F /* XQHomePageItem.xib in Resources */,
 				A4968C6D228E879C004ED08A /* XQTestVC.xib in Resources */,
 				A4E7DA3022A0DB9900A76788 /* XQEditVC.xib in Resources */,
+				A4DC0C2422A663720079B44F /* XQDoneTaskVC.xib in Resources */,
 				A487B9D5229BE0FF0013686F /* xq_upload.sh in Resources */,
 				A4968C56228E8611004ED08A /* Main.storyboard in Resources */,
+				A4DC0C1F22A663650079B44F /* XQTaskVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A407B38322A4B1C900BBF9A0 /* XQSMacroExpansion.m in Sources */,
+				A4DC0C2822A6638B0079B44F /* XQProjectVC.m in Sources */,
 				A4C61105229D093700754194 /* PBXBuildFile.m in Sources */,
 				A4C61106229D093700754194 /* PBXShellScriptBuildPhase.m in Sources */,
 				A4C61111229D093700754194 /* XCBuildConfiguration.m in Sources */,
@@ -780,6 +856,7 @@
 				A487B9B6229BB0860013686F /* XQArchiveConfigModel.m in Sources */,
 				A407B38022A4B09800BBF9A0 /* XQSchemeBaseModel.m in Sources */,
 				A4C61112229D093700754194 /* XCConfigurationList.m in Sources */,
+				A4DC0C2322A663720079B44F /* XQDoneTaskVC.m in Sources */,
 				A407B36822A4AD1700BBF9A0 /* XQSchemeProfileActionModel.m in Sources */,
 				A407B38622A4B30700BBF9A0 /* XQSBuildActionEntries.m in Sources */,
 				A4C61118229D093800754194 /* PBXContainerItemProxy.m in Sources */,
@@ -809,9 +886,11 @@
 				A4C6110D229D093700754194 /* PBXTarget.m in Sources */,
 				A4C61116229D093700754194 /* PBXFileReference.m in Sources */,
 				A4C61113229D093700754194 /* PBXGroup.m in Sources */,
+				A4DC0C1E22A663650079B44F /* XQTaskVC.m in Sources */,
 				A4C61108229D093700754194 /* PBXSourcesBuildPhase.m in Sources */,
 				A4C61109229D093700754194 /* PBXFrameworksBuildPhase.m in Sources */,
 				A407B37D22A4AF8700BBF9A0 /* XQSBuildableReference.m in Sources */,
+				A4EBFE3122A7511300F32DD1 /* XQUserNotification.m in Sources */,
 				A407B3A922A4F18600BBF9A0 /* XQEditVCProfileModel.m in Sources */,
 				A407B36522A4AD0300BBF9A0 /* XQSchemeArchiveActionModel.m in Sources */,
 				A407B36E22A4AD4300BBF9A0 /* XQSchemeTestActionModel.m in Sources */,
@@ -964,9 +1043,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = XQArchiveProject/XQArchiveProject.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XQArchiveProject",
+				);
 				INFOPLIST_FILE = XQArchiveProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -974,6 +1058,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQArchiveProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -983,9 +1068,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = XQArchiveProject/XQArchiveProject.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HYE5WA8QEX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XQArchiveProject",
+				);
 				INFOPLIST_FILE = XQArchiveProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -993,6 +1083,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wxqlm.XQArchiveProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

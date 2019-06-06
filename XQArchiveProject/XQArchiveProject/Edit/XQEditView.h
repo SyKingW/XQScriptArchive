@@ -92,6 +92,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSTextField *buglyAppVersionTF;
 @property (nonatomic, strong) NSButton *buglyUpDSYMBtn;
 
+
+/**
+ 刷新证书view
+ */
+- (void)refreshMobileprovisionView;
+
 @end
 
 NS_ASSUME_NONNULL_END

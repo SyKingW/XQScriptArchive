@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** <#note#> */
 @property (nonatomic, copy) NSString *BuildableName;
-/** <#note#> */
+/** 对于 project.pbxproj 里面 target 的 id */
 @property (nonatomic, copy) NSString *BlueprintIdentifier;
 /** <#note#> */
 @property (nonatomic, copy) NSString *BuildableIdentifier;

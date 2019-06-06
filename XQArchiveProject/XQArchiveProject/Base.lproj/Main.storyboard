@@ -707,50 +707,80 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="639" height="452"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m7-WI-gxT">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <clipView key="contentView" id="GBf-z7-XQo">
-                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <collectionView id="LVo-EU-yXj">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Ehq-EL-2Mg">
-                                                <size key="itemSize" width="300" height="250"/>
-                                            </collectionViewFlowLayout>
-                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </collectionView>
-                                    </subviews>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="RBh-f0-SDn">
-                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="TUq-9K-dqe">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g47-xU-2kH">
+                                <rect key="frame" x="-6" y="405" width="223" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="38a-Tb-8Ar"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="项目" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AGw-6U-ZZf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="respondsToProject:" target="XfG-lQ-9wD" id="xfx-Km-UVt"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OG4-Ro-JsP">
+                                <rect key="frame" x="205" y="405" width="223" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zCn-iL-ogz"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="正在执行任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eeW-cv-2ia">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="respondsToExecutingTask:" target="XfG-lQ-9wD" id="jbF-EI-nkY"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jZB-YI-KO9">
+                                <rect key="frame" x="416" y="405" width="229" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GUA-zh-gdN"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="已完成任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qrc-8A-zAy">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="respondsToDoneTask:" target="XfG-lQ-9wD" id="P3d-5v-fy5"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="IWL-6c-ip4">
+                                <rect key="frame" x="0.0" y="0.0" width="639" height="412"/>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0m7-WI-gxT" secondAttribute="trailing" id="MTw-5z-GV4"/>
-                            <constraint firstItem="0m7-WI-gxT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="PWQ-dJ-7lo"/>
-                            <constraint firstAttribute="bottom" secondItem="0m7-WI-gxT" secondAttribute="bottom" id="iDB-TP-Ol4"/>
-                            <constraint firstItem="0m7-WI-gxT" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="wEg-PH-wiA"/>
+                            <constraint firstAttribute="trailing" secondItem="IWL-6c-ip4" secondAttribute="trailing" id="5vH-wu-zho"/>
+                            <constraint firstAttribute="bottom" secondItem="IWL-6c-ip4" secondAttribute="bottom" id="8eQ-Sw-3lZ"/>
+                            <constraint firstItem="OG4-Ro-JsP" firstAttribute="leading" secondItem="g47-xU-2kH" secondAttribute="trailing" id="9ei-O3-DFs"/>
+                            <constraint firstItem="IWL-6c-ip4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Fha-Sa-ZMg"/>
+                            <constraint firstItem="g47-xU-2kH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="N3C-zn-DCd"/>
+                            <constraint firstItem="OG4-Ro-JsP" firstAttribute="leading" secondItem="g47-xU-2kH" secondAttribute="trailing" id="Oyo-mj-rld"/>
+                            <constraint firstItem="g47-xU-2kH" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.33" id="R6V-Oo-vDk"/>
+                            <constraint firstItem="OG4-Ro-JsP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Vwj-f2-qlD"/>
+                            <constraint firstItem="OG4-Ro-JsP" firstAttribute="width" secondItem="g47-xU-2kH" secondAttribute="width" id="WbV-th-NAJ"/>
+                            <constraint firstItem="jZB-YI-KO9" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="bfd-LR-fSt"/>
+                            <constraint firstAttribute="trailing" secondItem="jZB-YI-KO9" secondAttribute="trailing" id="dp9-yU-dhR"/>
+                            <constraint firstItem="g47-xU-2kH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="g2c-eb-hZ1"/>
+                            <constraint firstItem="IWL-6c-ip4" firstAttribute="top" secondItem="g47-xU-2kH" secondAttribute="bottom" id="gRm-lQ-OB7"/>
+                            <constraint firstItem="jZB-YI-KO9" firstAttribute="leading" secondItem="OG4-Ro-JsP" secondAttribute="trailing" id="iKF-pB-beM"/>
+                            <constraint firstItem="OG4-Ro-JsP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="nIm-0r-w8n"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="LVo-EU-yXj" id="0RL-Tw-zuR"/>
-                        <outlet property="flowLayout" destination="Ehq-EL-2Mg" id="rVm-Oa-KRq"/>
+                        <outlet property="contentView" destination="IWL-6c-ip4" id="wG5-7m-m9d"/>
+                        <outlet property="doneTaskBtn" destination="jZB-YI-KO9" id="AsU-0Z-VGu"/>
+                        <outlet property="projectBtn" destination="g47-xU-2kH" id="WNy-Uj-IBN"/>
+                        <outlet property="taskingBtn" destination="OG4-Ro-JsP" id="hZ5-xk-iiF"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="154.5" y="746"/>
         </scene>
     </scenes>
 </document>

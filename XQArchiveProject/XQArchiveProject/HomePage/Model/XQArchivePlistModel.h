@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL compileBitcode;
 
-/** 前面方式
+/** 签名方式
  
  automatic: 自动
  manual: 手动

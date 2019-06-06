@@ -24,9 +24,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)save;
 
 /**
- 开始构建
+ 构建项目
  */
-- (void)build;
+- (void)buildWithError:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler;
+
+/**
+ 构建release项目
+ */
+- (void)buildReleaseWithError:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler;
+/**
+ 构建debug项目
+ */
+- (void)buildDebugWithError:(out NSError ** _Nullable)error outLogHandle:(void (^)(NSString *log))outLogHandle errorLogHandle:(void (^)(NSString *log))errorLogHandle terminationHandler:(void (^_Nullable)(NSTask *task))terminationHandler;
+
+
 
 /**
  停止任务

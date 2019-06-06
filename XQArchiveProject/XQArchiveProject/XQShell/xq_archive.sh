@@ -100,6 +100,8 @@ xcarchivePath=$($xq_jq .xcarchivePath $xqConfigJsonPath)
 
 # .ipa 文件
 ipaPath=$($xq_jq .ipaPath $xqConfigJsonPath)
+# 自定义 .ipa 名称
+customArchiveName=$($xq_jq .customIpaName $xqConfigJsonPath)
 
 # 是否生成 dsym
 generateDSYM=$($xq_jq .generateDSYM $xqConfigJsonPath)
@@ -167,6 +169,8 @@ upAppStore=${upAppStore//"\""/}
 buildMode=${buildMode//"\""/}
 dSYMFolderPath=${dSYMFolderPath//"\""/}
 generateDSYM=${generateDSYM//"\""/}
+customArchiveName=${customArchiveName//"\""/}
+
 
 # $1 要判断的字符串
 function xq_assignment() {
@@ -234,6 +238,10 @@ xq_assignment $mobileprovisionUUID
 mobileprovisionUUID=$xq_result
 
 
+if [ ${#customArchiveName} == 0 ] || [ ${customArchiveName} == null ]; then
+    customArchiveName=${scheme_name}
+fi
+
 # ${var:-null} 如果是 var 是空值, 那么默认取得为 null, 不过这个解决不了 "" 问题, 所以还是按照现在的来吧
 
 #echo "1: $xcodeprojPath"
@@ -276,4 +284,5 @@ source ${xq_DIR1}/xq_shell.sh \
     ${symbolOutputPath:-null} \
     ${buglyAppVersions:-null} \
     ${plistAutoIncrement:-null} \
-    ${generateDSYM:-null}
+    ${generateDSYM:-null} \
+    ${customArchiveName:-null}

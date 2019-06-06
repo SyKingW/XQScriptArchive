@@ -53,6 +53,9 @@
 - (void)loadView {
     NSLog(@"%s", __func__);
     
+    [super loadView];
+    return;
+    
     /**
      考虑用runtime解决
      
@@ -73,7 +76,7 @@
         [super loadView];
     }else {
         if (!_editView) {
-            _editView = [[XQEditView alloc] initWithFrame:NSMakeRect(0, 0, 500, 500)];
+            _editView = [[XQEditView alloc] initWithFrame:NSMakeRect(0, 0, 700, 800)];
             [self setValue:_editView forKey:@"view"];
         }
     }
@@ -89,7 +92,27 @@
     [self updateData];
 }
 
+- (void)viewWillAppear {
+    [super viewWillAppear];
+    
+    // 滚动要那么麻烦吗??? 官方接口呢？？
+    NSRect rect = self.editView.scrollView.contentView.bounds;
+    CGFloat y = self.editView.scrollView.documentView.bounds.size.height - rect.size.height;
+    if (y > 0) {
+        rect.origin.y = y;
+        self.editView.scrollView.contentView.bounds = rect;
+    }
+}
+
 - (void)initUI {
+    if (!_editView) {
+        _editView = [[XQEditView alloc] initWithFrame:NSMakeRect(0, 0, 700, 800)];
+        [self.view addSubview:self.editView];
+        [self.editView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    }
+    
     self.editView.projectNameTF.stringValue = self.archiveModel.configModel.xq_name ? self.archiveModel.configModel.xq_name : @"";
     self.editView.bundleIdTF.stringValue = self.archiveModel.configModel.bundleId ? self.archiveModel.configModel.bundleId : @"";
     self.editView.currentTargetTF.stringValue = self.archiveModel.configModel.schemeName ? self.archiveModel.configModel.schemeName : @"";
@@ -98,6 +121,9 @@
     self.editView.teamIdTF.stringValue = self.archiveModel.configModel.teamId ? self.archiveModel.configModel.teamId : @"";
     self.editView.releaseBtn.state = [self.archiveModel.configModel.archiveMode isEqualToString:XQ_Archive_Release] ? NSControlStateValueOn : NSControlStateValueOff;
     self.editView.generateDSYMBtn.state = [self.archiveModel.configModel.generateDSYM isEqualToString:XQ_Archive_on] ? NSControlStateValueOn : NSControlStateValueOff;
+    
+    self.editView.automaticBtn.state = [self.archiveModel.devPlistModel.signingStyle isEqualToString:XQ_ArchivePlist_SigningStyle_Automatic] ? NSControlStateValueOn : NSControlStateValueOff;
+    [self.editView refreshMobileprovisionView];
     
     self.editView.buildSavePathTF.stringValue = self.archiveModel.configModel.buildPath ? self.archiveModel.configModel.buildPath : @"";
     self.editView.projectPlistpPathTF.stringValue = self.archiveModel.configModel.projectPlistPath ? self.archiveModel.configModel.projectPlistPath : @"";
@@ -182,40 +208,49 @@
         return;
     }
     
-    // scheme 操作
-    
+    [self.editView.targetBtn removeAllItems];
+    [self.editView.targetBtn addItemWithTitle:@"切换Scheme"];
+    self.cSchemeModel = nil;
     if (self.archiveModel.configModel.schemeName) {
-        [self.editView.targetBtn removeAllItems];
-        [self.editView.targetBtn addItemWithTitle:@"切换Scheme"];
-        
-        for (PBXTarget *target in self.appTargetsArr) {
-            if ([[target getName] isEqualToString:self.archiveModel.configModel.schemeName]) {
-                self.cAppTargets = target;
-                // 当前自身, 不用再添加了
+        for (XQSchemeModel *sModel in self.schemeArr) {
+            if ([sModel.xq_schemeName isEqualToString:self.archiveModel.configModel.schemeName]) {
+                self.cSchemeModel = sModel;
                 continue;
             }
-            [self.editView.targetBtn addItemWithTitle:[target getName]];
+            [self.editView.targetBtn addItemWithTitle:sModel.xq_schemeName];
         }
-        
-        if (!self.cAppTargets) {
-            self.cAppTargets = self.appTargetsArr.firstObject;
-        }
-        
-    }else {
-        self.cAppTargets = self.appTargetsArr.firstObject;
-        
     }
     
-    [self refreshWithTarget:self.cAppTargets];
+    if (!self.cSchemeModel) {
+        self.cSchemeModel = self.schemeArr.firstObject;
+    }
+    
+    
+    
+    self.cAppTargets = nil;
+    for (PBXTarget *target in self.appTargetsArr) {
+        if ([[target objectId] isEqualToString:self.cSchemeModel.LaunchAction.BuildableProductRunnable.BuildableReference.BlueprintIdentifier]) {
+            self.cAppTargets = target;
+            break;
+        }
+    }
+    
+    if (!self.cAppTargets) {
+        [XQAlertSystem alertErrorWithWithWindow:self.view.window domain:[NSString stringWithFormat:@"找不到 %@ 对于的 target", self.cSchemeModel.xq_schemeName] code:10000 userInfo:nil callback:nil];
+        return;
+    }
+    
+    [self refreshWithTarget:self.cAppTargets scheme:self.cSchemeModel];
 }
 
-- (void)refreshWithTarget:(PBXTarget *)target {
-    if (!target) {
+- (void)refreshWithTarget:(PBXTarget *)target scheme:(XQSchemeModel *)scheme {
+    if (!target || !scheme) {
         return;
     }
     
     // scheme name
-    NSString *name = [target getName];
+//    NSString *name = [target getName];
+    NSString *name = scheme.xq_schemeName;
     self.editView.currentTargetTF.stringValue = name ? name : @"";
     self.editView.projectNameTF.stringValue = name ? name : @"";
     
@@ -229,8 +264,11 @@
         
         // "CODE_SIGN_STYLE" = Automatic; or Manual;
         NSString *codeSignStyle = [bc getBuildSetting:@"CODE_SIGN_STYLE"];
-        self.archiveModel.devPlistModel.signingStyle = codeSignStyle;
-        self.archiveModel.disPlistModel.signingStyle = codeSignStyle;
+        self.archiveModel.devPlistModel.signingStyle = [codeSignStyle lowercaseString];
+        self.archiveModel.disPlistModel.signingStyle = [codeSignStyle lowercaseString];
+        
+        self.editView.automaticBtn.state = [self.archiveModel.devPlistModel.signingStyle isEqualToString:XQ_ArchivePlist_SigningStyle_Automatic] ? NSControlStateValueOn : NSControlStateValueOff;
+        [self.editView refreshMobileprovisionView];
         
         // "DEVELOPMENT_TEAM" = xxx;
         NSString *team = [bc getBuildSetting:@"DEVELOPMENT_TEAM"];
@@ -266,7 +304,16 @@
         [profileMuArr addObject:pModel];
     }
     
+    
+    
     self.editView.mobileprovisionModelArr = profileMuArr;
+    
+    // 是否存在自定义ipa名称
+    if (scheme.ArchiveAction.customArchiveName.length == 0) {
+        self.archiveModel.configModel.customIpaName = scheme.xq_schemeName;
+    }else {
+        self.archiveModel.configModel.customIpaName = scheme.ArchiveAction.customArchiveName;
+    }
 }
 
 - (void)saveConfig {
@@ -311,6 +358,13 @@
             [disDic addEntriesFromDictionary:@{pView.mobileprovisionDescriptTF.stringValue:pView.mobileprovisionDisTF.stringValue}];
         }
         
+    }
+    
+    // 是否存在自定义ipa名称
+    if (self.cSchemeModel.ArchiveAction.customArchiveName.length == 0) {
+        self.archiveModel.configModel.customIpaName = self.cSchemeModel.xq_schemeName;
+    }else {
+        self.archiveModel.configModel.customIpaName = self.cSchemeModel.ArchiveAction.customArchiveName;
     }
     
     self.archiveModel.devPlistModel.provisioningProfiles = devDic;

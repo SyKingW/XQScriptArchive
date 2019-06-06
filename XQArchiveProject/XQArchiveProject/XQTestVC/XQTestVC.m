@@ -29,7 +29,7 @@
 - (IBAction)respondsToExecuteShell:(id)sender {
     
 //    [[XQTask manager] xq_executeBashWithCmd:@"bash /Users/wangxingqian/Desktop/Blog/XQScriptArchive1/123.sh"];
-    [[XQTask manager] xq_executeSudoWithCmd:@"bash /Users/wangxingqian/Desktop/Blog/XQScriptArchive/XQShell/xq_archive.sh"];
+//    [[XQTask manager] xq_executeSudoWithCmd:@"bash /Users/wangxingqian/Desktop/Blog/XQScriptArchive/XQShell/xq_archive.sh"];
     
     
     return;
@@ -37,7 +37,7 @@
     [XQOpenPanel beginSheetModalWithWindow:self.view.window configPanel:^(NSOpenPanel *openPanel) {
         openPanel.allowedFileTypes = @[@"sh"];
     } openCallback:^(NSString *path) {
-        [[XQTask manager] xq_executeBashWithCmd:path];
+//        [[XQTask manager] xq_executeBashWithCmd:path];
     } cancelCallback:nil];
 }
 

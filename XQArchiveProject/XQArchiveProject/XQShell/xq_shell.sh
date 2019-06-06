@@ -112,6 +112,9 @@ plistAutoIncrement=${24}
 # 1: 生成
 generateDSYM=${25}
 
+# 自定义 .ipa 名称
+customArchiveName=${26}
+
 
 
 # 如果传入值不为0, 那么就退出脚本
@@ -162,14 +165,14 @@ if [ ${buildMode} == 1 ]; then
     createXcarchiveFile ${archiveMode} "${xcworkspace_path}" "${scheme_name}" "${build_path}" "${projectPlist_path}" ${generateDSYM} "${saveDirectionPath}"
 
     #把xcarchive, 打成ipa包, 并返回 ipaPath
-    createIpa "${xcarchive_path}" "${scheme_name}" ${archiveMode} "${ipaDir_path}" "${xq_exportOptionsPlistPath}"
+    createIpa "${xcarchive_path}" "${scheme_name}" ${archiveMode} "${ipaDir_path}" "${xq_exportOptionsPlistPath}" "${customArchiveName}"
 
 elif [ ${buildMode} == 2 ]; then
 
     echo "构建ipa"
 
     #把xcarchive, 打成ipa包, 并返回 ipaPath
-    createIpa "${xcarchive_path}" "${scheme_name}" ${archiveMode} "${ipaDir_path}" "${xq_exportOptionsPlistPath}"
+    createIpa "${xcarchive_path}" "${scheme_name}" ${archiveMode} "${ipaDir_path}" "${xq_exportOptionsPlistPath}" "${customArchiveName}"
 
 else
     echo "不构建"

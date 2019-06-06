@@ -18,17 +18,19 @@
         self.mobileprovisionDescriptTF = [NSTextField labelWithString:@""];
         [self addSubview:self.mobileprovisionDescriptTF];
         
-        self.mobileprovisionDevTF = [NSTextField new];
+        self.mobileprovisionDevTF = [NSTextField labelWithString:@""];
         [self addSubview:self.mobileprovisionDevTF];
         
         self.mobileprovisionDevBtn = [NSButton buttonWithTitle:@"选择开发描述文件" target:self action:@selector(respondsToSelectDevMobileprovision:)];
         [self addSubview:self.mobileprovisionDevBtn];
+        self.mobileprovisionDevBtn.enabled = NO;
         
-        self.mobileprovisionDisTF = [NSTextField new];
+        self.mobileprovisionDisTF = [NSTextField labelWithString:@""];
         [self addSubview:self.mobileprovisionDisTF];
         
         self.mobileprovisionDisBtn = [NSButton buttonWithTitle:@"选择生产描述文件" target:self action:@selector(respondsToSelectDisMobileprovision:)];
         [self addSubview:self.mobileprovisionDisBtn];
+        self.mobileprovisionDisBtn.enabled = NO;
         
         [self.mobileprovisionDescriptTF mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.leading.equalTo(self);
