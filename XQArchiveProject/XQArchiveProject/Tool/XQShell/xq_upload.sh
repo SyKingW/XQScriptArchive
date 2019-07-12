@@ -26,6 +26,8 @@ function xqUploadAppStore() {
     #echo "account: " ${appleID}
     echo "验证需要密码, 再次输入密码验证: " ${appleIDPwd}
 
+    echo 'F4163373-6DD2-492A-9FDB-9DA3F12065BD'
+
     #注意：使用AppleID密码上传时若遇到以下报错 “Please sign in with an app-specific password. You can create one at appleid.apple.com” 则说明你的 Apple ID 采用了双重认证密码，上架 iOS App 需要去建立一个专用密码来登入 Apple ID 才能上架。, 申请专用密码: https://appleid.apple.com/account/manage, 具体可以百度 APP-SPECIFIC PASSWORDS
     echo '-------------'
     echo ' 开始验证 '
@@ -41,6 +43,8 @@ function xqUploadAppStore() {
     echo ' 上传AppStore结束 '
     echo '-------------'
 
+    echo '3899EE42-1211-460B-B969-311CB0925E37'
+
     return 1
 }
 
@@ -52,6 +56,8 @@ function xqUploadFir() {
         echo "error: 上传 Fir, ipa文件不存在"
         return 0
     fi
+
+    echo 'ED247AB0-79C4-4956-A3C1-1472902C126A'
 
     echo '-------------'
     echo ' 上传第fir平台 '
@@ -69,6 +75,8 @@ function xqUploadFir() {
     echo '-------------'
     echo ' 上传fir结束 '
     echo '-------------'
+
+    echo '31A9A078-333D-4AFF-9FFB-17E263F44BD2'
 
     return 1
 }

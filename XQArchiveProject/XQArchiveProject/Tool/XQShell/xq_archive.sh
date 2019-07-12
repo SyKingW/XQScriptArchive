@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 获取监本自身的文件夹路径
+# 获取文件本自身的文件夹路径
 xq_DIR1="$(dirname $BASH_SOURCE)"
 xq_MYDIR=$(readlink -f "$xq_DIR1")
 

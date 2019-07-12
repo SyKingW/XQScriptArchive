@@ -17,15 +17,16 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    NSDictionary *dic = @{
-                          @"1":@"1",
-                          @"2":@(1),
-                          @"3":@(YES),
-                          };
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES).firstObject;
-    path = [path stringByAppendingPathComponent:@"test.plist"];
     
-    path = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"XQArchiveProject/xq_shell_config/E855E29C-5A8A-4503-8AB7-A3E6ADE1E3DC/xq_dis_exportOptions.plist"];
+//    NSDictionary *dic = @{
+//                          @"1":@"1",
+//                          @"2":@(1),
+//                          @"3":@(YES),
+//                          };
+//    NSString *path = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES).firstObject;
+//    path = [path stringByAppendingPathComponent:@"test.plist"];
+//
+//    path = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"XQArchiveProject/xq_shell_config/E855E29C-5A8A-4503-8AB7-A3E6ADE1E3DC/xq_dis_exportOptions.plist"];
     
 //    path = @"/Users/wangxingqian/Library/XQArchiveProject/xq_shell_config/E855E29C-5A8A-4503-8AB7-A3E6ADE1E3DC/xq_dis_exportOptions.plist";
     

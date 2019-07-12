@@ -34,6 +34,8 @@ typedef void(^XQHomePageItemCallback)(XQHomePageItem *item, XQHomePageItemTap ta
 /** <#note#> */
 @property (nonatomic, copy) XQHomePageItemCallback callback;
 
+- (void)presentEditVC;
+
 @end
 
 NS_ASSUME_NONNULL_END

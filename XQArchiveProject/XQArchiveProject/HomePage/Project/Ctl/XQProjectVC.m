@@ -86,8 +86,15 @@
     
     [self.dataArr insertObject:model atIndex:0];
     
-    NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:0 inSection:0]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+    NSSet *set = [NSSet setWithObject:indexPath];
     [self.collectionView insertItemsAtIndexPaths:set];
+    
+    // 直接弹出编辑界面
+    XQHomePageItem *item = (XQHomePageItem *)[self.collectionView itemAtIndexPath:indexPath];
+    if (item) {
+        [item presentEditVC];
+    }
 }
 
 #pragma mark - responds
@@ -152,7 +159,10 @@
                     }
                     
                     if (![f createFileAtPath:path contents:[weakSelf.tempText dataUsingEncoding:NSUTF8StringEncoding] attributes:nil]) {
-                        [XQAlertSystem alertErrorWithWithWindow:self.view.window domain:@"写入失败" code:1000 userInfo:nil callback:nil];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [XQAlertSystem alertErrorWithWithWindow:self.view.window domain:@"写入失败" code:1000 userInfo:nil callback:nil];
+                        });
+                        
                     }
                     
                 }];

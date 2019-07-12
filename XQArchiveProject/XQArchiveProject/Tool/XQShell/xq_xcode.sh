@@ -27,6 +27,8 @@ function createXcarchiveFile() {
     echo "dSYM: $6"
     echo "Save .Xcarchive Path: $7"
 
+    echo '49CECB67-99E5-4B30-A73F-D5EBD8AA3E68'
+
     echo '-----------'
     echo ' 开始清理工程 '
     echo '-----------'
@@ -39,6 +41,8 @@ function createXcarchiveFile() {
     echo ' 清理完成 '
     echo '--------'
     echo ''
+
+    echo 'A0661894-953B-41B6-B0A4-B520163E1DA2'
     
     directionPath=$7
     xcarchive_path="${directionPath}/${scheme_name}.xcarchive"
@@ -53,6 +57,8 @@ function createXcarchiveFile() {
     if [ ! -d ".${dSYMFolderPath}" ]; then
         mkdir -p "$dSYMFolderPath"
     fi
+
+    echo '6042B410-261D-4B81-9037-9B4288DCAFB0'
 
     #开始编译
     if [ $generateDSYM == 1 ] || [ "$generateDSYM" == "1" ]; then
@@ -105,6 +111,8 @@ function createXcarchiveFile() {
         # [<buildaction>]...
 
     fi
+
+echo 'B125B79C-5DA1-47D3-AFA5-CE763F4173B8'
 
 if [ -e "$xcarchive_path" ]; then
 
@@ -173,6 +181,8 @@ xq_allowProvisioningUpdates=$xq_value
     #导出.ipa文件所在路径
     exportIpaPath="${exportIpaFolderPath}"
 
+    echo '61486A3E-C857-4DCE-8AA2-681F6614A922'
+
     if [ $xq_allowProvisioningUpdates == automatic ]; then
         echo "automatic 签名打包"
         #把xcarchive编译成ipa
@@ -200,6 +210,7 @@ xq_allowProvisioningUpdates=$xq_value
 
     fi
 
+    echo '443C5591-8181-4117-B95A-8776A2BFE08C'
 
 
     #ipa包路径

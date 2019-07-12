@@ -35,14 +35,18 @@
     self.nameLab.stringValue = [NSString stringWithFormat:@"%@(%@)", self.archiveModel.configModel.xq_name ? self.archiveModel.configModel.xq_name : @"未命名", self.archiveModel.configModel.bundleId];
 }
 
-#pragma mark - responds
-
-- (IBAction)respondsToEdit:(NSButton *)sender {
-//    XQEditVC *vc = [[XQEditVC alloc] initWithNibName:@"XQEditVC" bundle:nil];
+- (void)presentEditVC {
+    //    XQEditVC *vc = [[XQEditVC alloc] initWithNibName:@"XQEditVC" bundle:nil];
     XQEditVC *vc = [XQEditVC new];
     vc.archiveModel = self.archiveModel;
     
     [self presentViewControllerAsModalWindow:vc];
+}
+
+#pragma mark - responds
+
+- (IBAction)respondsToEdit:(NSButton *)sender {
+    [self presentEditVC];
 }
 
 - (IBAction)respondsToBuild:(NSButton *)sender {

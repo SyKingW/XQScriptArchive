@@ -10,7 +10,46 @@
 #import "XQArchiveConfigModel.h"
 #import "XQArchivePlistModel.h"
 
+/**
+ 执行脚本的进度
+
+ - XQArchiveProjectProgressUnknow: 未知
+ - XQArchiveProjectProgressCleanProjectStart: 开始清理项目
+ - XQArchiveProjectProgressCleanProjectEnd: 清理完成
+ - XQArchiveProjectProgressBuildProjectStart: 开始编译项目
+ - XQArchiveProjectProgressBuildProjectEnd: 编译完成
+ - XQArchiveProjectProgressExportIpaStart: 开始导出ipa
+ - XQArchiveProjectProgressExportIpaEnd: 导出ipa完成
+ - XQArchiveProjectProgressUploadFirStart: 开始上传ipa到fir
+ - XQArchiveProjectProgressUploadFirEnd: 上传ipa到fir完成
+ - XQArchiveProjectProgressUploadAppStoreStart: 开始上传ipa到App Store
+ - XQArchiveProjectProgressUploadAppStoreEnd: 上传ipa到App Store完成
+ - XQArchiveProjectProgressUploadBuglyStart: 开始上传dsym到bugly
+ - XQArchiveProjectProgressUploadBuglyEnd: 上传dsym到bugly完成
+ */
+typedef NS_ENUM(NSUInteger, XQArchiveProjectProgress) {
+    XQArchiveProjectProgressUnknow = 0,
+    XQArchiveProjectProgressCleanProjectStart,
+    XQArchiveProjectProgressCleanProjectEnd,
+    XQArchiveProjectProgressBuildProjectStart,
+    XQArchiveProjectProgressBuildProjectEnd,
+    XQArchiveProjectProgressExportIpaStart,
+    XQArchiveProjectProgressExportIpaEnd,
+    XQArchiveProjectProgressUploadFirStart,
+    XQArchiveProjectProgressUploadFirEnd,
+    XQArchiveProjectProgressUploadAppStoreStart,
+    XQArchiveProjectProgressUploadAppStoreEnd,
+    XQArchiveProjectProgressUploadBuglyStart,
+    XQArchiveProjectProgressUploadBuglyEnd,
+};
+
+
+
 NS_ASSUME_NONNULL_BEGIN
+
+@class XQArchiveModel;
+
+typedef void(^XQArchiveProjectProgressCallback)(XQArchiveModel *archiveModel);
 
 @interface XQArchiveProjectModel : XQArchiveModel
 
@@ -20,6 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) XQArchivePlistModel *devPlistModel;
 /** <#note#> */
 @property (nonatomic, strong) XQArchivePlistModel *disPlistModel;
+
+/** 执行脚本进度 */
+@property (nonatomic, assign) XQArchiveProjectProgress shProgress;
+/** 执行脚本进度 */
+@property (nonatomic, copy) XQArchiveProjectProgressCallback shProgressChangeCallback;
 
 - (void)save;
 

@@ -9,6 +9,37 @@
 #import "XQArchiveProjectModel.h"
 #import <XQProjectTool/XQTask.h>
 
+
+// 开始清理项目
+#define XQ_Def_Clean_Project_Start @"49CECB67-99E5-4B30-A73F-D5EBD8AA3E68"
+// 结束清理项目
+#define XQ_Def_Clean_Project_End @"A0661894-953B-41B6-B0A4-B520163E1DA2"
+
+// 开始编译
+#define XQ_Def_Build_Project_Start @"6042B410-261D-4B81-9037-9B4288DCAFB0"
+// 结束编译
+#define XQ_Def_Build_Project_End @"B125B79C-5DA1-47D3-AFA5-CE763F4173B8"
+
+// 开始导出 .ipa 包
+#define XQ_Def_Export_Ipa_Start @"61486A3E-C857-4DCE-8AA2-681F6614A922"
+// 结束导入 .ipa 包
+#define XQ_Def_Export_Ipa_End @"443C5591-8181-4117-B95A-8776A2BFE08C"
+
+// 开始上传 fir
+#define XQ_Def_Upload_Fir_Start @"ED247AB0-79C4-4956-A3C1-1472902C126A"
+// 结束上传 fir
+#define XQ_Def_Upload_Fir_End @"31A9A078-333D-4AFF-9FFB-17E263F44BD2"
+
+// 开始上传 App Store
+#define XQ_Def_Upload_AppStore_Start @"F4163373-6DD2-492A-9FDB-9DA3F12065BD"
+// 结束上传 App Store
+#define XQ_Def_Upload_AppStore_End @"3899EE42-1211-460B-B969-311CB0925E37"
+
+// 开始上传 Bugly
+#define XQ_Def_Upload_Bugly_Start @"D9027F18-1086-4C1A-9A62-256CD64CF8AC"
+// 结束上传 Bugly
+#define XQ_Def_Upload_Bugly_End @"1A096E70-E133-4725-ADB7-020760A8D0BF"
+
 @implementation XQArchiveProjectModel
 
 - (void)save {
@@ -60,9 +91,87 @@
         plistPath = self.devPlistModel.xq_path;
     }
     
-    NSString *cmd = [NSString stringWithFormat:@"bash %@ %@ %@", archivePath, self.configModel.xq_path, plistPath];
-    [[XQTask manager] xq_executeSudoWithCmd:cmd key:self.configModel.bundleId error:error outLogHandle:outLogHandle errorLogHandle:errorLogHandle terminationHandler:terminationHandler];
+    self.shProgress = XQArchiveProjectProgressUnknow;
     
+    NSString *cmd = [NSString stringWithFormat:@"bash %@ %@ %@", archivePath, self.configModel.xq_path, plistPath];
+    [[XQTask manager] xq_executeSudoWithCmd:cmd key:self.configModel.bundleId error:error outLogHandle:^(NSString * _Nonnull log) {
+        if ([log containsString:XQ_Def_Clean_Project_Start]) {
+            // 清理项目
+            NSLog(@"开始清理项目");
+            self.shProgress = XQArchiveProjectProgressCleanProjectStart;
+            
+        }else if ([log containsString:XQ_Def_Clean_Project_End]) {
+            NSLog(@"结束清理项目");
+            self.shProgress = XQArchiveProjectProgressCleanProjectEnd;
+            
+            
+            
+        }else if ([log containsString:XQ_Def_Build_Project_Start]) {
+            // 编译
+            NSLog(@"开始编译项目");
+            self.shProgress = XQArchiveProjectProgressBuildProjectStart;
+            
+        }else if ([log containsString:XQ_Def_Build_Project_End]) {
+            NSLog(@"结束编译项目");
+            self.shProgress = XQArchiveProjectProgressBuildProjectEnd;
+            
+            
+            
+        }else if ([log containsString:XQ_Def_Export_Ipa_Start]) {
+            // ipa
+            NSLog(@"开始导出ipa");
+            self.shProgress = XQArchiveProjectProgressExportIpaStart;
+            
+        }else if ([log containsString:XQ_Def_Export_Ipa_End]) {
+            NSLog(@"结束导出ipa");
+            self.shProgress = XQArchiveProjectProgressExportIpaEnd;
+            
+            
+            
+        }else if ([log containsString:XQ_Def_Upload_Fir_Start]) {
+            // fir
+            NSLog(@"开始上传fir");
+            self.shProgress = XQArchiveProjectProgressUploadFirStart;
+            
+        }else if ([log containsString:XQ_Def_Upload_Fir_End]) {
+            NSLog(@"结束上传fir");
+            self.shProgress = XQArchiveProjectProgressUploadFirEnd;
+            
+            
+            
+        }else if ([log containsString:XQ_Def_Upload_AppStore_Start]) {
+            // App Store
+            NSLog(@"开始上传App Store");
+            self.shProgress = XQArchiveProjectProgressUploadAppStoreStart;
+            
+        }else if ([log containsString:XQ_Def_Upload_AppStore_End]) {
+            NSLog(@"结束上传App Store");
+            self.shProgress = XQArchiveProjectProgressUploadAppStoreEnd;
+            
+            
+        }else if ([log containsString:XQ_Def_Upload_Bugly_Start]) {
+            // Bugly
+            NSLog(@"开始上传Bugly");
+            self.shProgress = XQArchiveProjectProgressUploadBuglyStart;
+            
+        }else if ([log containsString:XQ_Def_Upload_Bugly_End]) {
+            NSLog(@"结束上传Bugly");
+            self.shProgress = XQArchiveProjectProgressUploadBuglyEnd;
+            
+        }
+        
+        if (outLogHandle) {
+            outLogHandle(log);
+        }
+        
+    } errorLogHandle:errorLogHandle terminationHandler:^(NSTask * _Nonnull task) {
+        self.shProgress = XQArchiveProjectProgressUnknow;
+        if (terminationHandler) {
+            terminationHandler(task);
+        }
+        
+        
+    }];
 }
 
 - (void)terminate {
@@ -228,6 +337,20 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
     return path;
+}
+
+#pragma mark - set
+
+- (void)setShProgress:(XQArchiveProjectProgress)shProgress {
+    // 不相等, 那么通知外面
+    if (_shProgress != shProgress) {
+        _shProgress = shProgress;
+        if (self.shProgressChangeCallback) {
+            self.shProgressChangeCallback(self);
+        }
+        return;
+    }
+    _shProgress = shProgress;
 }
 
 @end

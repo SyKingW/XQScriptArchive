@@ -202,8 +202,9 @@ if [ $buglyUploadDSYM == 1 ]; then
         echo "error: bugly version null"
         return 0
     fi
-
+    echo 'D9027F18-1086-4C1A-9A62-256CD64CF8AC'
     uploadDSYM "${dSYMFolderPath}" ${xq_automaticAddBundle} ${buglyAppId} ${buglyAppKey} ${buglyAppVersions}
+    echo '1A096E70-E133-4725-ADB7-020760A8D0BF'
 fi
 
 #结束脚本

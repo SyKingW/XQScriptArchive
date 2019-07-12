@@ -82,6 +82,7 @@
 		A4DC0C2422A663720079B44F /* XQDoneTaskVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DC0C2222A663720079B44F /* XQDoneTaskVC.xib */; };
 		A4DC0C2822A6638B0079B44F /* XQProjectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DC0C2622A6638B0079B44F /* XQProjectVC.m */; };
 		A4DC0C2922A6638B0079B44F /* XQProjectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DC0C2722A6638B0079B44F /* XQProjectVC.xib */; };
+		A4DC16E022C1A9DD004A72F1 /* XQTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DC16DF22C1A9DD004A72F1 /* XQTaskManager.m */; };
 		A4E7DA2E22A0D16100A76788 /* NSViewController+XQLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */; };
 		A4E7DA3022A0DB9900A76788 /* XQEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */; };
 		A4E7DA3422A0DC1300A76788 /* XQLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7DA3322A0DC1300A76788 /* XQLabel.m */; };
@@ -231,6 +232,8 @@
 		A4DC0C2522A6638B0079B44F /* XQProjectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQProjectVC.h; sourceTree = "<group>"; };
 		A4DC0C2622A6638B0079B44F /* XQProjectVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQProjectVC.m; sourceTree = "<group>"; };
 		A4DC0C2722A6638B0079B44F /* XQProjectVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XQProjectVC.xib; sourceTree = "<group>"; };
+		A4DC16DE22C1A9DD004A72F1 /* XQTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XQTaskManager.h; sourceTree = "<group>"; };
+		A4DC16DF22C1A9DD004A72F1 /* XQTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XQTaskManager.m; sourceTree = "<group>"; };
 		A4E7DA2C22A0D16100A76788 /* NSViewController+XQLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSViewController+XQLoadView.h"; sourceTree = "<group>"; };
 		A4E7DA2D22A0D16100A76788 /* NSViewController+XQLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSViewController+XQLoadView.m"; sourceTree = "<group>"; };
 		A4E7DA2F22A0DB9900A76788 /* XQEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XQEditVC.xib; sourceTree = "<group>"; };
@@ -356,6 +359,7 @@
 		A487B9B3229BB0410013686F /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				A487B9C7229BE0FF0013686F /* XQShell */,
 				A4EBFE2E22A750F700F32DD1 /* UserNotification */,
 				A4E7DA3122A0DC0500A76788 /* XQLabel */,
 				A4C6111C229D170C00754194 /* ProfilesNode */,
@@ -394,6 +398,8 @@
 				A487B9CD229BE0FF0013686F /* xq_shell.sh */,
 				A487B9CF229BE0FF0013686F /* xq_archive.sh */,
 				A487B9D0229BE0FF0013686F /* xq_bugly.sh */,
+				A4DC16DE22C1A9DD004A72F1 /* XQTaskManager.h */,
+				A4DC16DF22C1A9DD004A72F1 /* XQTaskManager.m */,
 			);
 			path = XQShell;
 			sourceTree = "<group>";
@@ -468,7 +474,6 @@
 			children = (
 				A4968C4C228E8610004ED08A /* AppDelegate.h */,
 				A4968C4D228E8610004ED08A /* AppDelegate.m */,
-				A487B9C7229BE0FF0013686F /* XQShell */,
 				A487B9BC229BC66A0013686F /* Edit */,
 				A487B9B3229BB0410013686F /* Tool */,
 				A487B9B2229BB0310013686F /* HomePage */,
@@ -737,7 +742,7 @@
 								enabled = 1;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -905,6 +910,7 @@
 				A4C61117229D093800754194 /* PBXProjectConst.m in Sources */,
 				A4968C4E228E8610004ED08A /* AppDelegate.m in Sources */,
 				A4D13516229FDC1800609D2E /* XQEditView.m in Sources */,
+				A4DC16E022C1A9DD004A72F1 /* XQTaskManager.m in Sources */,
 				A4D13519229FDEAA00609D2E /* XQEditMobileprovisionView.m in Sources */,
 				A4C61114229D093700754194 /* PBXVariantGroup.m in Sources */,
 				A487B9C0229BC67F0013686F /* XQEditVC.m in Sources */,
